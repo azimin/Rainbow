@@ -70,13 +70,13 @@ class ColorOnImage {
       // Get the RGB colors from the bitmap context, ignoring any pixels
       // that have alpha transparency.
       // Also convert the colors to the LAB color space
-      var labValues = [Optimize3DFloatVector]()
+      var labValues = [Vector3D]()
       labValues.reserveCapacity(Int(scaledWidth * scaledHeight))
       
-      let RGBToLAB: RGBAPixel -> Optimize3DFloatVector = {
-        let f: RGBAPixel -> Optimize3DFloatVector = { 
+      let RGBToLAB: RGBAPixel -> Vector3D = {
+        let f: RGBAPixel -> Vector3D = { 
           let vector = $0.toRGBVector()
-          return Optimize3DFloatVector(labTuple: LABColor(r: vector.x, g: vector.y, b: vector.z).toTuple())
+          return LABColor(r: vector.x, g: vector.y, b: vector.z).toVector()
         }
         return memoizeConversions ? memoize(f) : f
       }()
@@ -104,22 +104,19 @@ class ColorOnImage {
       
   }
   
-  private static func distanceForAccuracy(accuracy: GroupingAccuracy) -> (Optimize3DFloatVector, Optimize3DFloatVector) -> Float {
+  private static func distanceForAccuracy(accuracy: GroupingAccuracy) -> (Vector3D, Vector3D) -> Float {
     switch accuracy {
     case .Low:
-      return {
-        (lab1Tuple: Optimize3DFloatVector, lab2Tuple: Optimize3DFloatVector) -> Float in
-        return CIE76SquaredColorDifferenceFunction(lab1Tuple.toFloatTuple(), lab2: lab2Tuple.toFloatTuple())
-      }
+      return CIE76SquaredColorDifferenceFunction
     case .Medium:
       return {
-        (lab1Tuple: Optimize3DFloatVector, lab2Tuple: Optimize3DFloatVector) -> Float in
-        return CIE94SquaredColorDifferenceFunction(lab1: lab1Tuple.toFloatTuple(), lab2: lab2Tuple.toFloatTuple())
+        (lab1: Vector3D, lab2: Vector3D) -> Float in
+        return CIE94SquaredColorDifferenceFunction(lab1: lab1, lab2: lab2)
       }
     case .High:
       return {
-        (lab1Tuple: Optimize3DFloatVector, lab2Tuple: Optimize3DFloatVector) -> Float in
-        return CIE2000SquaredColorDifferenceFunction(lab1: lab1Tuple.toFloatTuple(), lab2: lab2Tuple.toFloatTuple())
+        (lab1: Vector3D, lab2: Vector3D) -> Float in
+        return CIE2000SquaredColorDifferenceFunction(lab1: lab1, lab2: lab2)
       }
     }
   }

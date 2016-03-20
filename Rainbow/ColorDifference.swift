@@ -19,13 +19,13 @@ internal struct CIE76SquaredColorDifference: ColorDifference {
   // From http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE76.html
   
   func colorDifference(lab1: LABColor, lab2: LABColor) -> Float {
-    return CIE76SquaredColorDifferenceFunction(lab1.toTuple(), lab2: lab2.toTuple())
+    return CIE76SquaredColorDifferenceFunction(lab1.toVector(), lab2: lab2.toVector())
   }
 }
 
-internal func CIE76SquaredColorDifferenceFunction(lab1: LABTuple, lab2: LABTuple) -> Float {
-  let (L1, a1, b1) = lab1
-  let (L2, a2, b2) = lab2
+internal func CIE76SquaredColorDifferenceFunction(lab1: Vector3D, lab2: Vector3D) -> Float {
+  let (L1, a1, b1) = lab1.toFloatTuple()
+  let (L2, a2, b2) = lab2.toFloatTuple()
   return pow(L2 - L1, 2) + pow(a2 - a1, 2) + pow(b2 - b1, 2)
 }
 
@@ -54,12 +54,12 @@ internal struct CIE94SquaredColorDifference: ColorDifference {
 // Created for optimization
 
 internal func CIE94SquaredColorDifferenceFunction(kL: Float = 1, kC: Float = 1, kH: Float = 1, K1: Float = 0.045, K2: Float = 0.015, lab1: LABColor, lab2: LABColor) -> Float {
-  return CIE94SquaredColorDifferenceFunction(kL, kC: kC, kH: kH, K1: K1, K2: K2, lab1: lab1.toTuple(), lab2: lab1.toTuple())
+  return CIE94SquaredColorDifferenceFunction(kL, kC: kC, kH: kH, K1: K1, K2: K2, lab1: lab1.toVector(), lab2: lab1.toVector())
 }
 
-internal func CIE94SquaredColorDifferenceFunction(kL: Float = 1, kC: Float = 1, kH: Float = 1, K1: Float = 0.045, K2: Float = 0.015, lab1: LABTuple, lab2: LABTuple) -> Float {
-  let (L1, a1, b1) = lab1
-  let (L2, a2, b2) = lab2
+internal func CIE94SquaredColorDifferenceFunction(kL: Float = 1, kC: Float = 1, kH: Float = 1, K1: Float = 0.045, K2: Float = 0.015, lab1: Vector3D, lab2: Vector3D) -> Float {
+  let (L1, a1, b1) = lab1.toFloatTuple()
+  let (L2, a2, b2) = lab2.toFloatTuple()
   
   let ΔL = L1 - L2
   
@@ -96,13 +96,13 @@ internal struct CIE2000SquaredColorDifference: ColorDifference {
 // Created for optimization
 
 internal func CIE2000SquaredColorDifferenceFunction(kL: Float = 1, kC: Float = 1, kH: Float = 1, lab1: LABColor, lab2: LABColor) -> Float {
-  return CIE2000SquaredColorDifferenceFunction(kL, kC: kC, kH: kH, lab1: lab1.toTuple(), lab2: lab2.toTuple())
+  return CIE2000SquaredColorDifferenceFunction(kL, kC: kC, kH: kH, lab1: lab1.toVector(), lab2: lab2.toVector())
 }
 
-internal func CIE2000SquaredColorDifferenceFunction(kL: Float = 1, kC: Float = 1, kH: Float = 1, lab1: LABTuple, lab2: LABTuple) -> Float {
+internal func CIE2000SquaredColorDifferenceFunction(kL: Float = 1, kC: Float = 1, kH: Float = 1, lab1: Vector3D, lab2: Vector3D) -> Float {
   
-  let (L1, a1, b1) = lab1
-  let (L2, a2, b2) = lab2
+  let (L1, a1, b1) = lab1.toFloatTuple()
+  let (L2, a2, b2) = lab2.toFloatTuple()
   
   let ΔLp = L2 - L1
   let Lbp = (L1 + L2) / 2

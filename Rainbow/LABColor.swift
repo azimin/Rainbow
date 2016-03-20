@@ -94,6 +94,10 @@ public struct LABColor {
     return (l, a, b)
   }
   
+  func toVector() -> Vector3D {
+    return Vector3D(x: l, y: a, z: b)
+  }
+  
   // http://www.easyrgb.com/index.php?X=MATH&H=01#text1
   
   private func calculateColor() -> Color {
