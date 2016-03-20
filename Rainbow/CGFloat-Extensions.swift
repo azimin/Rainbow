@@ -18,3 +18,19 @@ extension CGFloat {
     }
   }
 }
+
+internal extension CGFloat {
+  func toFloat() -> Float {
+    return Float(self)
+  }
+  
+  func toDouble() -> Double {
+    return Double(self)
+  }
+}
+
+extension CGFloat {
+  var degreesToRadians: CGFloat {
+    return self * CGFloat(M_PI) / 180.0
+  }
+}

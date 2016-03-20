@@ -10,10 +10,10 @@ import XCTest
 @testable import Rainbow
 
 
-typealias RGBColorSet = (red: CGFloat, green: CGFloat, blue: CGFloat)
-typealias LABColorSet = (l: CGFloat, a: CGFloat, b: CGFloat)
+typealias RGBColorSet = (red: Float, green: Float, blue: Float)
+typealias LABColorSet = (l: Float, a: Float, b: Float)
 
-let eps: CGFloat = 0.01
+let eps: Float = 0.01
 
 var testRGBToLABPairs: [(rgb: RGBColorSet, lab: LABColorSet)] =
 [((0.65, 0.35, 0.9), (52.8964, 56.1483, -59.2251)),
@@ -54,7 +54,7 @@ class LABColorTests: XCTestCase {
   }
   
   func compare(color: Color, value: RGBColorSet) {
-    let value = abs(color.red - value.red) + abs(color.green - value.green) + abs(color.blue - value.blue)
+    let value = abs(color.red() - value.red) + abs(color.green() - value.green) + abs(color.blue() - value.blue)
     assert(value < eps, "Wrong RGB calculation value")
   }
   

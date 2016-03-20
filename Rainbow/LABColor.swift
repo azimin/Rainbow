@@ -8,14 +8,16 @@
 
 import UIKit
 
+typealias RGBTuple = (red: Float, green: Float, blue: Float)
+typealias LABTuple = (l: Float, a: Float, b: Float)
+
 public struct LABColor {
-  private(set) var l: CGFloat
-  private(set) var a: CGFloat
-  private(set) var b: CGFloat
-  
+  private(set) var l: Float
+  private(set) var a: Float
+  private(set) var b: Float
   private(set) var color: Color!
   
-  init(l: CGFloat, a: CGFloat, b: CGFloat) {
+  init(l: Float, a: Float, b: Float) {
     self.l = l
     self.a = a
     self.b = b
@@ -24,12 +26,22 @@ public struct LABColor {
   }
   
   // http://www.easyrgb.com/index.php?X=MATH&H=01#text1
-  init(color: Color) {
-    var red = Double(color.red)
-    var green = Double(color.green)
-    var blue = Double(color.blue)
+  // shouldSetColor == false for more optiomozation, but color will be nil
+  
+  init(rgbTupple: RGBTuple) {
+    self.init(r: rgbTupple.red, g: rgbTupple.green, b: rgbTupple.blue)
+  }
+  
+  init(labTupple: LABTuple) {
+    self.init(l: labTupple.l, a: labTupple.a, b: labTupple.b)
+  }
+  
+  init(r: Float, g: Float, b: Float, shouldSetColor: Bool = false) {
+    var red = r
+    var green = g
+    var blue = b
     
-    let normalizeRGBValue: (Double) -> (Double) = {
+    let normalizeRGBValue: (Float) -> (Float) = {
       value in
       if value > 0.04045 {
         return pow(((value + 0.055) / 1.055), 2.4)
@@ -53,7 +65,7 @@ public struct LABColor {
     yValue /= 100
     zValue /= 108.883
     
-    let normalizeXYZ: (Double) -> (Double) = {
+    let normalizeXYZ: (Float) -> (Float) = {
       value in
       if value > 0.008856 {
         return pow(value, 1.0 / 3.0)
@@ -65,20 +77,31 @@ public struct LABColor {
     yValue = normalizeXYZ(yValue)
     zValue = normalizeXYZ(zValue)
     
-    l = CGFloat(116 * yValue - 16)
-    a = CGFloat(500 * (xValue - yValue))
-    b = CGFloat(200 * (yValue - zValue))
+    self.l = 116 * yValue - 16
+    self.a = 500 * (xValue - yValue)
+    self.b = 200 * (yValue - zValue)
     
-    self.color = color
+    if shouldSetColor {
+      self.color = Color(red: r, green: g, blue: b)
+    }
+  }
+  
+  init(color: Color) {
+    self.init(r: color.red(), g: color.green(), b: color.blue())
+  }
+  
+  func toTuple() -> LABTuple {
+    return (l, a, b)
   }
   
   // http://www.easyrgb.com/index.php?X=MATH&H=01#text1
+  
   private func calculateColor() -> Color {
-    var yValue = Double((l + 16) / 116)
-    var xValue = Double(a / 500 + CGFloat(yValue))
-    var zValue = Double(CGFloat(yValue) - b / 200)
+    var yValue = (l + 16) / 116
+    var xValue = (a / 500 + yValue)
+    var zValue = (yValue - b / 200)
     
-    let normalizeXYZ: (Double) -> (Double) = {
+    let normalizeXYZ: (Float) -> (Float) = {
       value in
       if pow(value, 3) > 0.008856 {
         return pow(value, 3)
@@ -98,7 +121,7 @@ public struct LABColor {
     var green = xValue * -0.9689 + yValue * 1.8758 + zValue * 0.0415
     var blue = xValue * 0.0557 + yValue * -0.2040 + zValue * 1.0570
     
-    let normalizeRGBValue: (Double) -> (Double) = {
+    let normalizeRGBValue: (Float) -> (Float) = {
       value in
       if value > 0.0031308 {
         return 1.055 * pow(value, 1.0 / 2.4) - 0.055

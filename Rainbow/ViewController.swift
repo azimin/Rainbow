@@ -19,11 +19,19 @@ class ViewController: UIViewController {
     let redColor = UIColor.redColor()
     let color = Color(color: redColor)
     
+    let image = UIImage(named: "4db0324ff3")!.CGImage!
+    
+    var colors = ColorOnImage.dominantColorsInImage(image, maxSampledPixels: 1000, accuracy: GroupingAccuracy.High, seed: 100, memoizeConversions: false)
+    
+    for i in 0..<5 {
+      addColor(colors[i])
+    }
+    
     print(Color(color: baseColorView.backgroundColor)?.RGBValue)
     print(color.RGBValue)
+    print(LABColor(color: color))
     
     
-    addColor(color)
     // Do any additional setup after loading the view, typically from a nib.
   }
 
@@ -34,8 +42,8 @@ class ViewController: UIViewController {
   
   func addColor(color: Color) {
     let view = UIView()
-    view.heightAnchor.constraintEqualToConstant(100).active = true
-    view.widthAnchor.constraintEqualToConstant(100).active = true
+    view.heightAnchor.constraintEqualToConstant(50).active = true
+    view.widthAnchor.constraintEqualToConstant(50).active = true
     
     view.backgroundColor = color.UIColorValue
     

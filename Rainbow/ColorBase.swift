@@ -19,51 +19,49 @@ struct ColorCollection {
   var rule: (() -> ())?
 }
 
-struct Color {
-  var red: CGFloat
-  var green: CGFloat
-  var blue: CGFloat
-  var alpha: CGFloat = 1.0
+class Color {
+  var RGBVector: OptimizeVector3DType
+  var alpha: Float = 1.0
   
   init() {
-    self.red = 1.0
-    self.green = 1.0
-    self.blue = 1.0
+    RGBVector = Optimize3DFloatVector(x: 1.0, y: 1.0, z: 1.0)
   }
   
   init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) {
-    self.red = red
-    self.green = green
-    self.blue = blue
-    self.alpha = alpha
+    RGBVector = Optimize3DCGFloatVector(x: red, y: green, z: blue)
+    self.alpha = alpha.toFloat()
   }
   
   init(red: Double, green: Double, blue: Double, alpha: Double = 1.0) {
-    self.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+    RGBVector = Optimize3DDoubleVector(x: red, y: green, z: blue)
+    self.alpha = alpha.toFloat()
   }
   
   init(red: Float, green: Float, blue: Float, alpha: Float = 1.0) {
-    self.init(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
+    RGBVector = Optimize3DFloatVector(x: red, y: green, z: blue)
+    self.alpha = alpha
   }
   
-  init(color: UIColor) {
+  convenience init!(color: UIColor) {
     let cgColor = color.CGColor
     let components = CGColorGetComponents(cgColor)
-  
-    self.red = components[0]
-    self.green = components[1]
-    self.blue = components[2]
-    self.alpha = CGColorGetAlpha(cgColor)
+    
+    let red: CGFloat = components[0]
+    let green: CGFloat = components[1]
+    let blue: CGFloat = components[2]
+    let alpha: CGFloat = components[3]
+    
+    self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
   
-  init?(color: UIColor?) {
+  convenience init?(color: UIColor?) {
     guard let color = color else {
       return nil
     }
     self.init(color: color)
   }
   
-  init(hexString: String) {
+  convenience init(hexString: String) {
     var hex = hexString
     
     if hex.hasPrefix("#") {
@@ -97,11 +95,42 @@ struct Color {
       self.init()
     }
   }
-
-  var UIColorValue: UIColor {
-    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+  
+  // Tupples
+  private var _floatRGBVector: (red: Float, green: Float, blue: Float)?
+  internal var floatRGBVector: (red: Float, green: Float, blue: Float) {
+    var value = _floatRGBVector
+    if value == nil {
+      value = RGBVector.toFloatTuple()
+      _floatRGBVector = value
+    }
+    return value!
   }
- 
+  
+  private var _cgfloatRGBVector: (red: CGFloat, green: CGFloat, blue: CGFloat)?
+  internal var cgfloatRGBVector: (red: CGFloat, green: CGFloat, blue: CGFloat) {
+    var value = _cgfloatRGBVector
+    if value == nil {
+      value = RGBVector.toCGFloatTuple()
+      _cgfloatRGBVector = value
+    }
+    return value!
+  }
+  
+  private var _doubleRGBVector: (red: Double, green: Double, blue: Double)?
+  internal var doubleRGBVector: (red: Double, green: Double, blue: Double) {
+    var value = _doubleRGBVector
+    if value == nil {
+      value = RGBVector.toDoubleTuple()
+      _doubleRGBVector = value
+    }
+    return value!
+  }
+  
+  var UIColorValue: UIColor {
+    return UIColor(red: red(), green: green(), blue: blue(), alpha: alpha.toCGFloat())
+  }
+  
   var RGBValue: RGB {
     var result: RGB = .Red
     var minimalValue = ColorCompare(firstColor: self, secondColor: Color.redColor()).CIE76

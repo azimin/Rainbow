@@ -6,4 +6,10 @@
 //  Copyright © 2016 Alex Zimin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIColor {
+  var color: Color {
+    return Color(color: self)
+  }
+}
