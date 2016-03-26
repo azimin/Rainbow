@@ -8,14 +8,37 @@
 
 import UIKit
 
-typealias RGBTuple = (red: Float, green: Float, blue: Float)
-typealias LABTuple = (l: Float, a: Float, b: Float)
+// MARK: - LABColor additional init
+
+extension LABColor {
+  init(rgbVector: Vector3D) {
+    self.init(r: rgbVector.x, g: rgbVector.y, b: rgbVector.z)
+  }
+  
+  init(labVector: Vector3D) {
+    self.init(l: labVector.x, a: labVector.y, b: labVector.z)
+  }
+  
+  init(color: Color) {
+    self.init(r: color.red(), g: color.green(), b: color.blue())
+  }
+}
+
+// MARK: - LABColor convertions
+
+extension LABColor {
+  func toVector() -> Vector3D {
+    return Vector3D(x: l, y: a, z: b)
+  }
+}
+
+// MARK: - LABColor
 
 public struct LABColor {
   private(set) var l: Float
   private(set) var a: Float
   private(set) var b: Float
-  private(set) var color: Color!
+  private(set) var color: Color?
   
   init(l: Float, a: Float, b: Float) {
     self.l = l
@@ -27,14 +50,6 @@ public struct LABColor {
   
   // http://www.easyrgb.com/index.php?X=MATH&H=01#text1
   // shouldSetColor == false for more optiomozation, but color will be nil
-  
-  init(rgbTupple: RGBTuple) {
-    self.init(r: rgbTupple.red, g: rgbTupple.green, b: rgbTupple.blue)
-  }
-  
-  init(labTupple: LABTuple) {
-    self.init(l: labTupple.l, a: labTupple.a, b: labTupple.b)
-  }
   
   init(r: Float, g: Float, b: Float, shouldSetColor: Bool = false) {
     var red = r
@@ -84,18 +99,6 @@ public struct LABColor {
     if shouldSetColor {
       self.color = Color(red: r, green: g, blue: b)
     }
-  }
-  
-  init(color: Color) {
-    self.init(r: color.red(), g: color.green(), b: color.blue())
-  }
-  
-  func toTuple() -> LABTuple {
-    return (l, a, b)
-  }
-  
-  func toVector() -> Vector3D {
-    return Vector3D(x: l, y: a, z: b)
   }
   
   // http://www.easyrgb.com/index.php?X=MATH&H=01#text1

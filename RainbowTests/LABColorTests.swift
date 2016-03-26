@@ -44,7 +44,7 @@ class LABColorTests: XCTestCase {
     for values in testRGBToLABPairs {
       let labPair = values.lab
       let labColor = LABColor(l: labPair.l, a: labPair.a, b: labPair.b)
-      compare(labColor.color, value: values.rgb)
+      compare(labColor.color!, value: values.rgb)
     }
   }
   

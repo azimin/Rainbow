@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,33 +17,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mvq-Gy-lyh">
-                                <rect key="frame" x="250" y="250" width="100" height="100"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbQ-Km-qNs">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="iau-uU-VWf"/>
-                                            <constraint firstAttribute="width" constant="100" id="kfe-eR-0xu"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqi-Ch-Gyw">
+                                <rect key="frame" x="259" y="554" width="83" height="30"/>
+                                <state key="normal" title="Open image"/>
+                                <connections>
+                                    <action selector="openImageAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nyl-BK-2CP"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mvq-Gy-lyh">
+                                <rect key="frame" x="250" y="537" width="100" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="KOG-gY-bHv"/>
+                                    <constraint firstAttribute="height" priority="750" constant="100" id="Khj-cD-RPt"/>
+                                </constraints>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4db0324ff3" translatesAutoresizingMaskIntoConstraints="NO" id="93U-Dm-klp">
+                                <rect key="frame" x="25" y="20" width="550" height="509"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="93U-Dm-klp" secondAttribute="height" multiplier="40:37" id="Baa-BD-dDE"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Cqi-Ch-Gyw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8g5-Ih-5bp"/>
+                            <constraint firstItem="mvq-Gy-lyh" firstAttribute="top" secondItem="93U-Dm-klp" secondAttribute="bottom" constant="8" id="IPb-vo-lxN"/>
                             <constraint firstItem="mvq-Gy-lyh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IUK-UR-VX7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mvq-Gy-lyh" secondAttribute="bottom" constant="62" id="Nsb-6d-Cgy"/>
                             <constraint firstItem="mvq-Gy-lyh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dM1-HG-7UC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cqi-Ch-Gyw" secondAttribute="bottom" constant="16" id="ibB-8I-l2B"/>
+                            <constraint firstItem="93U-Dm-klp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jnG-as-PkT"/>
+                            <constraint firstItem="mvq-Gy-lyh" firstAttribute="bottom" secondItem="Cqi-Ch-Gyw" secondAttribute="top" constant="-16" id="ldr-Do-uEI"/>
+                            <constraint firstItem="93U-Dm-klp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="u9j-aj-K4a"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dM1-HG-7UC"/>
+                                <exclude reference="ldr-Do-uEI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="baseColorView" destination="CbQ-Km-qNs" id="NAq-T8-Kd7"/>
+                        <outlet property="imageView" destination="93U-Dm-klp" id="1Vm-bA-A78"/>
                         <outlet property="stackView" destination="mvq-Gy-lyh" id="dPh-TU-27R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="256" y="341"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="4db0324ff3" width="550" height="469"/>
+    </resources>
 </document>

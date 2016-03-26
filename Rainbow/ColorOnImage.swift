@@ -99,7 +99,7 @@ class ColorOnImage {
       
       
       return clusters.map { (vector) -> Color in
-        return LABColor(labTupple: vector.centroid.toFloatTuple()).color
+        return LABColor(labVector: vector.centroid).color!
       }
       
   }
@@ -158,6 +158,6 @@ class ColorOnImage {
   
   private static func selectKForElements<T>(elements: [T]) -> Int {
     // Seems like a magic number...
-    return 16
+    return 6
   }
 }
