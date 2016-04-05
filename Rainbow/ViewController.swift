@@ -10,18 +10,41 @@ import UIKit
 
 class ViewController: UIViewController {
   
+  @IBAction func sliderAction(sender: UISlider) {
+    let angle = Int(sender.value * 360)
+    let color = Color(hexString: "FF0000")
+    colorView.backgroundColor = RGBColorWheel.colorAtAngle(color, angle: angle).UIColorValue
+  }
+  
   @IBOutlet weak var stackView: UIStackView!
+  var colorView: UIView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    print(Color(hexString: "FF0000").hsb)
+    
+//    addColor(Color(hexString: "15858F"))
+//    addColor(Color(hexString: "53A9B1"))
+//    addColor(Color(hexString: "308E97"))
+//    addColor(Color(hexString: "086A73"))
+//    addColor(Color(hexString: "01545B"))
 
-    addColor(Color(red: 1, yellow: 0, blue: 0))
-    addColor(Color(red: 0.75, yellow: 0.25, blue: 0))
-    addColor(Color(red: 0.5, yellow: 0.5, blue: 0))
-    addColor(Color(red: 0.25, yellow: 0.75, blue: 0))
-    addColor(Color(red: 0, yellow: 1, blue: 0))
-    addColor(Color(red: 0, yellow: 0, blue: 1))
+    let angle = -40
+    let colro = RYBColorWheel.colorAtAngle(angle)
+    addColor(colro)
+    
+    
+    
+//    addColor(Color(red: 0.75, yellow: 0.25, blue: 0))
+//    addColor(Color(red: 0.5, yellow: 0.5, blue: 0))
+//    addColor(Color(red: 0.25, yellow: 0.75, blue: 0))
+//    addColor(Color(red: 0, yellow: 1, blue: 0))
+//    addColor(Color(red: 0, yellow: 0.75, blue: 0.25))
+//    addColor(Color(red: 0, yellow: 0.5, blue: 0.5))
+//    addColor(Color(red: 0, yellow: 0.25, blue: 0.75))
+//    addColor(Color(red: 0, yellow: 0, blue: 1))
+    
     // Do any additional setup after loading the view.
   }
   
@@ -35,6 +58,8 @@ class ViewController: UIViewController {
     view.heightAnchor.constraintEqualToConstant(25).active = true
     view.widthAnchor.constraintEqualToConstant(50).active = true
     view.backgroundColor = color.UIColorValue
+    
+    colorView = view
     
     stackView.addArrangedSubview(view)
   }

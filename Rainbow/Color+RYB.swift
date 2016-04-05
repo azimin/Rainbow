@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias RYB = (red: Float, yellow: Float, blue: Float)
+
 extension Color {
   convenience init(red: Float, yellow: Float, blue: Float, alpha: Float = 1) {
     let rgb = toRGB(red, yellow: yellow, blue: blue)
@@ -16,51 +18,6 @@ extension Color {
 }
 
 private func toRGB(red: Float, yellow: Float, blue: Float) -> (Float, Float, Float) {
-  var r, y, b, g, w, my, mg, n: Float
-  r = red
-  y = yellow
-  b = blue
-  
-  // remove whiteness
-  w = min(r, y, b)
-  r -= w
-  y -= w
-  b -= w
-  
-  my = max(r, y, b)
-  
-  // Get the green out of the yellow and blue
-  g = min(y, b)
-  y -= g
-  b -= g
-  
-  if b > 0 && g > 0 {
-    b *= 2.0
-    g *= 2.0
-  }
-  
-  // Redistribute the remaining yellow.
-  r += y
-  g += y
-  
-  // Normalize to values.
-  mg = max(r, g, b)
-  if mg > 0 {
-    n = my / mg
-    r *= n
-    g *= n
-    b *= n
-  }
-  
-  // Add the white back in.
-  r += w
-  g += w
-  b += w
-  
-  return (r, g, b)
-}
-
-private func toRGB2(red: Float, yellow: Float, blue: Float) -> (Float, Float, Float) {
   func cubicInterpolation(t: Float, a: Float, b: Float) -> Float {
     return (a + (t * t * (3.0 - 2.0 * t)) * (b - a))
   }
@@ -105,6 +62,8 @@ private func sanitize(r: Float, g: Float, b: Float) -> (Float, Float, Float) {
   
   blue = 0 != (signbit(blue)) ? blue * -1.0 : blue;
   blue = (1.0 > (blue * (100000.0))) ? 0.0 : (1.0 < blue) ? 1.0 : blue
+  
+  print(red, green, blue)
   
   return (red, green, blue)
 }

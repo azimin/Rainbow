@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Color From Image View Controller-->
@@ -85,9 +86,18 @@
                                     <constraint firstAttribute="width" constant="110" id="NDC-19-9DT"/>
                                 </constraints>
                             </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pzk-CR-fDN">
+                                <rect key="frame" x="18" y="562" width="564" height="31"/>
+                                <connections>
+                                    <action selector="sliderAction:" destination="P5L-RX-thN" eventType="valueChanged" id="5a8-it-ACt"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pzk-CR-fDN" firstAttribute="leading" secondItem="Tk7-ec-p3B" secondAttribute="leadingMargin" id="1SW-Hk-VEz"/>
+                            <constraint firstItem="pzk-CR-fDN" firstAttribute="trailing" secondItem="Tk7-ec-p3B" secondAttribute="trailingMargin" id="VP8-lx-HCz"/>
+                            <constraint firstItem="Awe-ls-W32" firstAttribute="top" secondItem="pzk-CR-fDN" secondAttribute="bottom" constant="8" id="YD1-W6-FoM"/>
                             <constraint firstItem="V4a-J8-Luu" firstAttribute="centerY" secondItem="Tk7-ec-p3B" secondAttribute="centerY" id="edg-Bg-19I"/>
                             <constraint firstItem="V4a-J8-Luu" firstAttribute="centerX" secondItem="Tk7-ec-p3B" secondAttribute="centerX" id="qbK-zi-vlE"/>
                         </constraints>

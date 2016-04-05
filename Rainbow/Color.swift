@@ -44,12 +44,23 @@ public class Color {
   
   convenience init!(color: UIColor) {
     let cgColor = color.CGColor
+    
+    let numberOfComponents = CGColorGetNumberOfComponents(cgColor)
     let components = CGColorGetComponents(cgColor)
     
-    let red: CGFloat = components[0]
-    let green: CGFloat = components[1]
-    let blue: CGFloat = components[2]
-    let alpha: CGFloat = components[3]
+    let red, green, blue, alpha: CGFloat
+    
+    if numberOfComponents == 4 {
+      red = components[0]
+      green = components[1]
+      blue = components[2]
+      alpha = components[3]
+    } else {
+      red = components[0]
+      green = components[0]
+      blue = components[0]
+      alpha = components[1]
+    }
     
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }

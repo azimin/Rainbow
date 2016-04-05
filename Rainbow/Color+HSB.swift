@@ -8,15 +8,18 @@
 
 import UIKit
 
+typealias HSB = (hue: Int, saturation: Float, brightness: Float)
+
 extension Color {
-  var hsb: Optimize3DCGFloatVector {
+  var hsb: HSB {
     var hsb: (h: CGFloat, s: CGFloat, b: CGFloat) = (0, 0, 0)
-    UIColor.blackColor().getHue(&(hsb.h), saturation: &(hsb.s), brightness: &(hsb.b), alpha: nil)
-    return Optimize3DCGFloatVector(x: hsb.h, y: hsb.s, z: hsb.b)
+    self.UIColorValue.getHue(&(hsb.h), saturation: &(hsb.s), brightness: &(hsb.b), alpha: nil)
+    return (Int(hsb.h * 360), hsb.s.toFloat(), hsb.b.toFloat())
   }
   
-  convenience init(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat = 1) {
-    let color = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+  convenience init(hue: Int, saturation: Float, brightness: Float, alpha: CGFloat = 1) {
+    let realHue = Float(hue % 360) / 360.0
+    let color = UIColor(hue: realHue.toCGFloat(), saturation: saturation.toCGFloat(), brightness: brightness.toCGFloat(), alpha: alpha)
     self.init(color: color)!
   }
 }
