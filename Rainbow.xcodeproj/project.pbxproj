@@ -12,7 +12,7 @@
 		9238A3231C9F4E1700E38C46 /* ColorOnImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238A3221C9F4E1700E38C46 /* ColorOnImage.swift */; };
 		9238A3251C9F589E00E38C46 /* KMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238A3241C9F589E00E38C46 /* KMean.swift */; };
 		92C0F05D1C4CE5FB00D13698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F05C1C4CE5FB00D13698 /* AppDelegate.swift */; };
-		92C0F05F1C4CE5FB00D13698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F05E1C4CE5FB00D13698 /* ViewController.swift */; };
+		92C0F05F1C4CE5FB00D13698 /* ColorFromImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F05E1C4CE5FB00D13698 /* ColorFromImageViewController.swift */; };
 		92C0F0621C4CE5FB00D13698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C0F0601C4CE5FB00D13698 /* Main.storyboard */; };
 		92C0F0641C4CE5FB00D13698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C0F0631C4CE5FB00D13698 /* Assets.xcassets */; };
 		92C0F0671C4CE5FB00D13698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C0F0651C4CE5FB00D13698 /* LaunchScreen.storyboard */; };
@@ -24,6 +24,10 @@
 		92C0F0851C4CF9A000D13698 /* RainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F0841C4CF9A000D13698 /* RainbowTests.swift */; };
 		92C0F08D1C4CF9B000D13698 /* LABColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F08C1C4CF9B000D13698 /* LABColorTests.swift */; };
 		92C0F0C51C4D085600D13698 /* ColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F0C41C4D085600D13698 /* ColorCollection.swift */; };
+		92C463A81CB3319800FF5932 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463A71CB3319800FF5932 /* ViewController.swift */; };
+		92C463AA1CB332A900FF5932 /* Color+HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463A91CB332A900FF5932 /* Color+HSB.swift */; };
+		92C463AC1CB333C800FF5932 /* ColorWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463AB1CB333C800FF5932 /* ColorWheel.swift */; };
+		92C463AE1CB3395500FF5932 /* Color+RYB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463AD1CB3395500FF5932 /* Color+RYB.swift */; };
 		92D2EF2B1C9F2D53005027CD /* Memoization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D2EF2A1C9F2D53005027CD /* Memoization.swift */; };
 		92D2EF2E1C9F392B005027CD /* Optimize3DVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D2EF2D1C9F392B005027CD /* Optimize3DVector.swift */; };
 		92EF101D1C9F65E800BE9AD3 /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EF101C1C9F65E800BE9AD3 /* Vector3D.swift */; };
@@ -48,7 +52,7 @@
 		9238A3241C9F589E00E38C46 /* KMean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMean.swift; sourceTree = "<group>"; };
 		92C0F0591C4CE5FB00D13698 /* Rainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C0F05C1C4CE5FB00D13698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92C0F05E1C4CE5FB00D13698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92C0F05E1C4CE5FB00D13698 /* ColorFromImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFromImageViewController.swift; sourceTree = "<group>"; };
 		92C0F0611C4CE5FB00D13698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92C0F0631C4CE5FB00D13698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92C0F0661C4CE5FB00D13698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +68,10 @@
 		92C0F0861C4CF9A000D13698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C0F08C1C4CF9B000D13698 /* LABColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LABColorTests.swift; sourceTree = "<group>"; };
 		92C0F0C41C4D085600D13698 /* ColorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
+		92C463A71CB3319800FF5932 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92C463A91CB332A900FF5932 /* Color+HSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+HSB.swift"; sourceTree = "<group>"; };
+		92C463AB1CB333C800FF5932 /* ColorWheel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheel.swift; sourceTree = "<group>"; };
+		92C463AD1CB3395500FF5932 /* Color+RYB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+RYB.swift"; sourceTree = "<group>"; };
 		92D2EF2A1C9F2D53005027CD /* Memoization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memoization.swift; sourceTree = "<group>"; };
 		92D2EF2D1C9F392B005027CD /* Optimize3DVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optimize3DVector.swift; sourceTree = "<group>"; };
 		92EF101C1C9F65E800BE9AD3 /* Vector3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3D.swift; sourceTree = "<group>"; };
@@ -118,9 +126,10 @@
 		92C0F05B1C4CE5FB00D13698 /* Rainbow */ = {
 			isa = PBXGroup;
 			children = (
-				92C0F05C1C4CE5FB00D13698 /* AppDelegate.swift */,
-				92C0F05E1C4CE5FB00D13698 /* ViewController.swift */,
 				92C0F0721C4CE68B00D13698 /* Base */,
+				92C0F05C1C4CE5FB00D13698 /* AppDelegate.swift */,
+				92C0F05E1C4CE5FB00D13698 /* ColorFromImageViewController.swift */,
+				92C463A71CB3319800FF5932 /* ViewController.swift */,
 				92C0F0601C4CE5FB00D13698 /* Main.storyboard */,
 				92C0F0631C4CE5FB00D13698 /* Assets.xcassets */,
 				92C0F0651C4CE5FB00D13698 /* LaunchScreen.storyboard */,
@@ -136,6 +145,9 @@
 				92C0F0C31C4D084D00D13698 /* Collections */,
 				92C0F06E1C4CE62600D13698 /* ColorBase.swift */,
 				9238A3131C9F456800E38C46 /* Color+RGB.swift */,
+				92C463A91CB332A900FF5932 /* Color+HSB.swift */,
+				92C463AD1CB3395500FF5932 /* Color+RYB.swift */,
+				92C463AB1CB333C800FF5932 /* ColorWheel.swift */,
 				9238A3211C9F4E0900E38C46 /* Image */,
 				92D2EF2C1C9F3907005027CD /* Optimization */,
 				92C33DF51C9F27FA00ECA748 /* ColorCompare */,
@@ -297,8 +309,10 @@
 			files = (
 				92D2EF2E1C9F392B005027CD /* Optimize3DVector.swift in Sources */,
 				92C0F0741C4CE75100D13698 /* CGFloat-Extensions.swift in Sources */,
+				92C463AA1CB332A900FF5932 /* Color+HSB.swift in Sources */,
 				9238A3251C9F589E00E38C46 /* KMean.swift in Sources */,
-				92C0F05F1C4CE5FB00D13698 /* ViewController.swift in Sources */,
+				92C463AE1CB3395500FF5932 /* Color+RYB.swift in Sources */,
+				92C0F05F1C4CE5FB00D13698 /* ColorFromImageViewController.swift in Sources */,
 				92C0F0711C4CE68100D13698 /* UIColor-Extensions.swift in Sources */,
 				92EF101D1C9F65E800BE9AD3 /* Vector3D.swift in Sources */,
 				92C0F0C51C4D085600D13698 /* ColorCollection.swift in Sources */,
@@ -307,9 +321,11 @@
 				9238A3231C9F4E1700E38C46 /* ColorOnImage.swift in Sources */,
 				92C0F0761C4CED5B00D13698 /* ColorCompare.swift in Sources */,
 				92F777F71C9F0F7700F72C77 /* ColorDifference.swift in Sources */,
+				92C463A81CB3319800FF5932 /* ViewController.swift in Sources */,
 				92F777FA1C9F10F000F72C77 /* Float-Extensions.swift in Sources */,
 				92C0F06F1C4CE62600D13698 /* ColorBase.swift in Sources */,
 				92C0F05D1C4CE5FB00D13698 /* AppDelegate.swift in Sources */,
+				92C463AC1CB333C800FF5932 /* ColorWheel.swift in Sources */,
 				92C0F0781C4CEEBE00D13698 /* LABColor.swift in Sources */,
 				9238A3141C9F456800E38C46 /* Color+RGB.swift in Sources */,
 			);

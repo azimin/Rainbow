@@ -8,20 +8,38 @@
 
 import Foundation
 
+// Basic
+
 extension Color {
   static func blackColor() -> Color {
-    return Color(hexString: "000000")
+    return Color(red: 0.0, green: 0, blue: 0)
+  }
+  
+  static func whiteColor() -> Color {
+    return Color(red: 1.0, green: 1, blue: 1)
+  }
+  
+  static func yellowColor() -> Color {
+    return Color(red: 1.0, green: 1, blue: 0)
   }
   
   static func redColor() -> Color {
-    return Color(hexString: "FF0000")
+    return Color(red: 1.0, green: 0, blue: 0)
   }
   
   static func greenColor() -> Color {
-    return Color(hexString: "00FF00")
+    return Color(red: 0.0, green: 1, blue: 0)
   }
   
   static func blueColor() -> Color {
-    return Color(hexString: "0000FF")
+    return Color(red: 0.0, green: 0, blue: 1)
   }
+}
+
+// Complex
+
+extension Color {
+  
+  
+  
 }
