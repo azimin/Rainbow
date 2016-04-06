@@ -12,7 +12,6 @@ class ViewController: UIViewController {
   
   @IBAction func sliderAction(sender: UISlider) {
     let angle = Int(sender.value * 360)
-    print(RYBColorModelAngleToHue.RYBStopToHSVStopMap(angle))
     test()
 //    let color = Color(hexString: "FF0000")
 //    let newColor = RGBColorWheel.colorAtAngle(color, angle: angle)
@@ -49,31 +48,22 @@ class ViewController: UIViewController {
 //    for color in colors {
 //      print(Color(hexString: color).hsl)
 //    }
+
+    let color = Color(hexString: "E0751D")
+    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self) 
+    let colors = wheelAction.complementary(color)
     
-    let colorsFromRYB = RYBColorModel.DefaultColorsCollection.colors
-    var count = 0
-    for i in 0..<colorsFromRYB.count {
-      let nextIndex = (colorsFromRYB.count - 1 == i) ? 0 : i + 1
-      let localColors = ColorGradientTemplate(startColor: colorsFromRYB[i], endColor: colorsFromRYB[nextIndex]).getColorsWithNumberOfSteps(30)
-      for color in localColors {
-        print("\(count),", color.hsl.hue)
-        count += 1
-      }
-    }
-    
-    for color in ColorGradientTemplate(startColor: Color(hexString: "F91515"), endColor: Color(hexString: "F97C15")).getColorsWithNumberOfSteps(30) {
-      print(color.hexString)
-    }
-    
-    let newColor = Color.redColor()
-    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
-    let colors = wheelAction.rectangle(newColor, secondColorLocation: .Right)
-    
-    addColor(colors.firstPair.0)
-    addColor(colors.firstPair.1)
-    
-    addColor(colors.secondPair.0)
-    addColor(colors.secondPair.1)
+    addColor(colors.color)
+    addColor(colors.complementary)
+//    let newColor = Color.redColor()
+//    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
+//    let colors = wheelAction.rectangle(newColor, secondColorLocation: .Right)
+//    
+//    addColor(colors.firstPair.0)
+//    addColor(colors.firstPair.1)
+//    
+//    addColor(colors.secondPair.0)
+//    addColor(colors.secondPair.1)
     
 //    addColor(Color(red: 0.75, yellow: 0.25, blue: 0))
 //    addColor(Color(red: 0.5, yellow: 0.5, blue: 0))
