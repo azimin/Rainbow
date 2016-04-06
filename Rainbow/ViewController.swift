@@ -31,23 +31,49 @@ class ViewController: UIViewController {
     
     print(Color(hexString: "FF0000").hsb)
     RYBColorModel.angleFromColor(Color.redColor())
-
-    addColor(Color(hue: 0, saturation: 0.57, lightness: 0.45))
-    addColor(Color(hue: 17, saturation: 0.57, lightness: 0.45))
-    addColor(Color(hue: 27, saturation: 0.57, lightness: 0.45))
     
-    print(Color(hue: 17, saturation: 0.57, lightness: 0.45).RGBVector)
-    print(Color(hue: 27, saturation: 0.57, lightness: 0.45).hexString)
+    print(RYBColorWheel.angleForColor(Color(hexString: "FF7400")))
+//
+//    addColor(Color(hue: 0, saturation: 0.57, luminosity: 0.45))
+//    addColor(Color(hue: 17, saturation: 0.57, luminosity: 0.45))
+//    addColor(Color(hue: 27, saturation: 0.57, luminosity: 0.45))
+//    
+//    let colors = [
+//      "712D2D",
+//    "712F2D",
+//    "71302D",
+//    "71322D",
+//    "71332D",
+//    "71352D",]
     
-//    let newColor = Color.redColor()
-//    let wheelAction = ColorWheelAction(colorWheel: RGBColorWheel.self)
-//    let colors = wheelAction.rectangle(newColor, secondColorLocation: .Right)
-//    
-//    addColor(colors.firstPair.0)
-//    addColor(colors.firstPair.1)
-//    
-//    addColor(colors.secondPair.0)
-//    addColor(colors.secondPair.1)
+//    for color in colors {
+//      print(Color(hexString: color).hsl)
+//    }
+    
+    let colorsFromRYB = RYBColorModel.DefaultColorsCollection.colors
+    var count = 0
+    for i in 0..<colorsFromRYB.count {
+      let nextIndex = (colorsFromRYB.count - 1 == i) ? 0 : i + 1
+      let localColors = ColorGradientTemplate(startColor: colorsFromRYB[i], endColor: colorsFromRYB[nextIndex]).getColorsWithNumberOfSteps(30)
+      for color in localColors {
+        print("\(count),", color.hsl.hue)
+        count += 1
+      }
+    }
+    
+    for color in ColorGradientTemplate(startColor: Color(hexString: "F91515"), endColor: Color(hexString: "F97C15")).getColorsWithNumberOfSteps(30) {
+      print(color.hexString)
+    }
+    
+    let newColor = Color.redColor()
+    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
+    let colors = wheelAction.rectangle(newColor, secondColorLocation: .Right)
+    
+    addColor(colors.firstPair.0)
+    addColor(colors.firstPair.1)
+    
+    addColor(colors.secondPair.0)
+    addColor(colors.secondPair.1)
     
 //    addColor(Color(red: 0.75, yellow: 0.25, blue: 0))
 //    addColor(Color(red: 0.5, yellow: 0.5, blue: 0))

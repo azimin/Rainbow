@@ -74,12 +74,7 @@ static void HSL2RGB(float h, float s, float l, float* outR, float* outG, float* 
 
 
 static void RGB2HSL(float r, float g, float b, float* outH, float* outS, float* outL)
-{
-  r = r/255.0f;
-  g = g/255.0f;
-  b = b/255.0f;
-  
-  
+{  
   float h,s, l, v, m, vm, r2, g2, b2;
   
   h = 0;

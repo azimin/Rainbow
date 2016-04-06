@@ -12,12 +12,9 @@ struct RYBColorModelAngleToHue {
   static var RYBStopToHSVStop: [Int: Int] {
     return [
       0 : 0,
-      60 : 35,
-      122 : 60,
-      165 : 120,
-      218 : 180,
-      275 : 240,
-      330 : 300,
+      60 : 120,
+      180 : 120,
+      240 : 240,
       360 : 360
     ]
   }
@@ -41,10 +38,6 @@ struct RYBColorModelAngleToHue {
     }
     return 0
   }
-  
-  // B43232
-  // B45732
-  // B46D32
   
   static func HSVStopToRYBStopMap(value: Int) -> Int {
     let values = RYBStopToHSVStop.reverseDictionary()

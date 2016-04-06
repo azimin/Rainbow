@@ -79,6 +79,6 @@ struct RYBColorModel {
   }
   
   static func angleFromColor(color: Color) -> Int {
-    return RYBColorModelAngleToHue.RYBStopToHSVStopMap(color.hsb.hue)
+    return RYBColorModelAngleToHue.RYBStopToHSVStopMap(color.hsl.hue)
   }
 }

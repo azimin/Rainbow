@@ -14,7 +14,7 @@ extension Color {
   var hsb: HSB {
     var hsb: (h: CGFloat, s: CGFloat, b: CGFloat) = (0, 0, 0)
     self.UIColorValue.getHue(&(hsb.h), saturation: &(hsb.s), brightness: &(hsb.b), alpha: nil)
-    return (Int(hsb.h * 360), hsb.s.toFloat(), hsb.b.toFloat())
+    return (Int(round(hsb.h * 360)), hsb.s.toFloat(), hsb.b.toFloat())
   }
   
   convenience init(hue: Int, saturation: Float, brightness: Float, alpha: CGFloat = 1) {

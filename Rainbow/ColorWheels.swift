@@ -26,9 +26,9 @@ struct RYBColorWheel: ColorWheelType {
   static func colorAtAngle(defaultColor: Color, angle: Int) -> Color {
     let color = colorAtAngle(angle)
     let hue = color.hsb.hue
-    let defaultHSB = defaultColor.hsb
+    let defaultHSB = defaultColor.hsl
     // 
-    return Color(hue: hue, saturation: defaultHSB.saturation, brightness: defaultHSB.brightness, alpha: defaultColor.alpha.toCGFloat())
+    return Color(hue: hue, saturation: defaultHSB.saturation, luminosity: defaultHSB.luminosity, alpha: defaultColor.alpha)
   }
   
   static func angleForColor(color: Color) -> Int {
