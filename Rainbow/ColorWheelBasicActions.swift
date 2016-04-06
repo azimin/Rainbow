@@ -14,32 +14,52 @@ struct ColorWheelAction {
     self.colorWheel = colorWheel
   }
   
+  init() {
+    self.init(colorWheel: RYBColorWheel.self)
+  }
+  
+  func takeSameStyleOfColor(color originColor: Color, forColorOnAngle color: Color) -> Color {
+    let angle = colorWheel.angleForColor(color)
+    return colorWheel.colorAtAngle(originColor, angle: angle)
+  }
+  
   // Hight contrast
-  func complementary(color: Color) -> (color: Color, complementary: Color) {
+  func complementary(color: Color) -> (original: Color, complementary: Color) {
     let angle = colorWheel.angleForColor(color)
     let complementaryColor = colorWheel.colorAtAngle(color, angle: angle + 180)
     return (color, complementaryColor)
   }
   
   // Two less contrast colors
-  func splitComplementary(color: Color) -> (color: Color, complementaryRight: Color, complementaryLeft: Color) {
+  func splitComplementary(color: Color, movementAngle: Int = 30) -> (original: Color, complementaryRight: Color, complementaryLeft: Color) {
     let angle = colorWheel.angleForColor(color)
-    let firstColor = colorWheel.colorAtAngle(color, angle: angle - 30)
-    let secondColor = colorWheel.colorAtAngle(color, angle: angle + 30)
+    let firstColor = colorWheel.colorAtAngle(color, angle: angle + (180 - movementAngle))
+    let secondColor = colorWheel.colorAtAngle(color, angle: angle + (180 + movementAngle))
     return (color, firstColor, secondColor)
   }
   
-  enum RectangleColorSchemeSecondColorLocation {
-    case Right
-    case Left
-  }
-  
-  func rectangle(firstColor: Color, secondColorLocation: RectangleColorSchemeSecondColorLocation = .Right) -> (firstPair: (Color, Color), secondPair: (Color, Color)) {
+  func rectangle(firstColor: Color, movementAngle: Int = 30) -> (firstPair: (Color, Color), secondPair: (Color, Color)) {
     let angle = colorWheel.angleForColor(firstColor)
-    let secondAngle = (secondColorLocation == .Right) ? angle + 30 : angle - 30 
+    let secondAngle = angle + movementAngle 
     let secondColor = colorWheel.colorAtAngle(firstColor, angle: secondAngle)
     let firstPair = complementary(firstColor)
     let secondPair = complementary(secondColor)
     return (firstPair, secondPair)
+  }
+  
+  // Narby colors
+  func analogous(color: Color, movementAngle: Int = 30) -> (middle: Color, left: Color, right: Color) {
+    let angle = colorWheel.angleForColor(color)
+    let leftColor = colorWheel.colorAtAngle(color, angle: angle - 30)
+    let rightColor = colorWheel.colorAtAngle(color, angle: angle + 30)
+    return (color, leftColor, rightColor)
+  }
+  
+  // Equal space on wheel
+  func triadic(color: Color) -> (original: Color, left: Color, right: Color) {
+    let angle = colorWheel.angleForColor(color)
+    let leftColor = colorWheel.colorAtAngle(color, angle: angle - 120)
+    let rightColor = colorWheel.colorAtAngle(color, angle: angle + 120)
+    return (color, leftColor, rightColor)
   }
 }

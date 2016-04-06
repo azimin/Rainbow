@@ -44,6 +44,4 @@ extension Color {
 
 extension Color {
   
-  
-  
 }

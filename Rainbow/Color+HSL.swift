@@ -6,9 +6,6 @@
 //  Copyright © 2016 Alex Zimin. All rights reserved.
 //
 
-
-// http://stackoverflow.com/questions/3018313/algorithm-to-convert-rgb-to-hsv-and-hsv-to-rgb-in-range-0-255-for-both/6930407#6930407 
-
 import UIKit
 
 typealias HSL = (hue: Int, saturation: Float, luminosity: Float)

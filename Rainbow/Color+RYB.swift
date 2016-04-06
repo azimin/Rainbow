@@ -33,6 +33,17 @@ private var magicColors: [[Float]] = [
   [0.2,   0.094, 0.0]
 ]
 
+//private var magicColors: [[Float]] = [
+//  [1,     1,     1],
+//  [1,     1,     0],
+//  [1,     0,     0],
+//  [1,     0.667, 0],
+//  [0.07,  0.25,  0.67],
+//  [0.0,   0.8,   0],
+//  [0.443, 0.035, 0.667],
+//  [0.2,   0.094, 0.0]
+//]
+
 // http://bahamas10.github.io/ryb/about.html
 
 private func toRGB(red: Float, yellow: Float, blue: Float) -> (Float, Float, Float) {

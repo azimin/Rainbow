@@ -19,7 +19,7 @@ struct ColorCollection {
   var rule: (() -> ())?
 }
 
-public class Color {
+final public class Color {
   var RGBVector: OptimizeVector3DType
   var alpha: Float = 1.0
   

@@ -24,7 +24,7 @@ class ColorFromImageViewController: UIViewController {
   }
   
   func makeImage(image: UIImage) {
-    var colors = ColorOnImage.dominantColorsInImage(image.CGImage!, maxSampledPixels: 2000, accuracy: GroupingAccuracy.High, seed: 100, memoizeConversions: false)
+    var colors = ColorOnImage.dominantColorsInImage(image.CGImage!, maxSampledPixels: 2000, accuracy: GroupingAccuracy.High, seed: 100)
     print(colors.count)
     
     _ = stackView.arrangedSubviews.map() {  $0.removeFromSuperview() }

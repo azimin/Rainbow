@@ -11,16 +11,15 @@
 import UIKit
 
 public enum GroupingAccuracy {
-  case Low        // CIE 76 - Euclidian distance
-  case Medium     // CIE 94 - Perceptual non-uniformity corrections
-  case High       // CIE 2000 - Additional corrections for neutral colors, lightness, chroma, and hue
+  case Low // CIE 76
+  case Medium // CIE 94
+  case High // CIE 2000
 }
 
 struct DefaultParameterValues {
   static var maxSampledPixels: Int = 1000
   static var accuracy: GroupingAccuracy = .Medium
   static var seed: UInt32 = 3571
-  static var memoizeConversions: Bool = false
 }
 
 private struct RGBAPixel {
@@ -56,8 +55,7 @@ class ColorOnImage {
     image: CGImage,
     maxSampledPixels: Int = DefaultParameterValues.maxSampledPixels,
     accuracy: GroupingAccuracy = DefaultParameterValues.accuracy,
-    seed: UInt32 = DefaultParameterValues.seed,
-    memoizeConversions: Bool = DefaultParameterValues.memoizeConversions) -> [Color] {
+    seed: UInt32 = DefaultParameterValues.seed) -> [Color] {
       
       let (width, height) = (CGImageGetWidth(image), CGImageGetHeight(image))
       let (scaledWidth, scaledHeight) = scaledDimensionsForPixelLimit(maxSampledPixels, width: width, height: height)
@@ -78,7 +76,7 @@ class ColorOnImage {
           let vector = $0.toRGBVector()
           return LABColor(r: vector.x, g: vector.y, b: vector.z).toVector()
         }
-        return memoizeConversions ? memoize(f) : f
+        return f
       }()
       
       enumerateRGBAContext(context) { (_, _, pixel) in
