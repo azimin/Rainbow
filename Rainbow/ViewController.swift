@@ -12,7 +12,7 @@ class ViewController: UIViewController {
   
   @IBAction func sliderAction(sender: UISlider) {
     let angle = Int(sender.value * 360)
-    test()
+    colorView.backgroundColor = RYBColorWheel.colorAtAngle(angle).UIColorValue
 //    let color = Color(hexString: "FF0000")
 //    let newColor = RGBColorWheel.colorAtAngle(color, angle: angle)
 //    colorView.backgroundColor = newColor.UIColorValue
@@ -27,34 +27,14 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    print(Color(hexString: "FF0000").hsb)
-    RYBColorModel.angleFromColor(Color.redColor())
-    
-    print(RYBColorWheel.angleForColor(Color(hexString: "FF7400")))
-//
-//    addColor(Color(hue: 0, saturation: 0.57, luminosity: 0.45))
-//    addColor(Color(hue: 17, saturation: 0.57, luminosity: 0.45))
-//    addColor(Color(hue: 27, saturation: 0.57, luminosity: 0.45))
-//    
-//    let colors = [
-//      "712D2D",
-//    "712F2D",
-//    "71302D",
-//    "71322D",
-//    "71332D",
-//    "71352D",]
-    
-//    for color in colors {
-//      print(Color(hexString: color).hsl)
-//    }
 
-    let color = Color(hexString: "E0751D")
+    let color = Color(hexString: "DAA273")
     let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self) 
     let colors = wheelAction.complementary(color)
     
     addColor(colors.color)
     addColor(colors.complementary)
+    
 //    let newColor = Color.redColor()
 //    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
 //    let colors = wheelAction.rectangle(newColor, secondColorLocation: .Right)

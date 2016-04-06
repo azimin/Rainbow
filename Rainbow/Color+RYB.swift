@@ -15,55 +15,71 @@ extension Color {
     let rgb = toRGB(red, yellow: yellow, blue: blue)
     self.init(red: rgb.0, green: rgb.1, blue: rgb.2, alpha: alpha)
   }
+  
+  func convertRGBToRYB() -> Color {
+    let values = self.RGBVector.toFloatTuple()
+    return Color(red: values.0, yellow: values.1, blue: values.2)
+  }
 }
+
+private var magicColors: [[Float]] = [
+  [1,     1,     1],
+  [1,     1,     0],
+  [1,     0,     0],
+  [1,     0.5,   0],
+  [0.163, 0.373, 0.6],
+  [0.0,   0.66,  0.2],
+  [0.5,   0.0,   0.5],
+  [0.2,   0.094, 0.0]
+]
+
+// http://bahamas10.github.io/ryb/about.html
 
 private func toRGB(red: Float, yellow: Float, blue: Float) -> (Float, Float, Float) {
-  func cubicInterpolation(t: Float, a: Float, b: Float) -> Float {
-    return (a + (t * t * (3.0 - 2.0 * t)) * (b - a))
+  func cubicInterpolation(t: Float, _ A: Float, _ B: Float) -> Float {
+    let weight = t * t * (3 - 2 * t)
+    return A + weight * (B - A)
   }
   
-  var x0 = cubicInterpolation(blue, a: 1.0, b: 0.163)
-  var x1 = cubicInterpolation(blue, a: 1.0, b: 0.0)
-  var x2 = cubicInterpolation(blue, a: 1.0, b: 0.5)
-  var x3 = cubicInterpolation(blue, a: 1.0, b: 0.2)
-  var y0 = cubicInterpolation(yellow, a: x0, b: x1)
-  var y1 = cubicInterpolation(yellow, a: x2, b: x3)
-  let red = cubicInterpolation(red, a: y0, b: y1)
+  func getRed(iR: Float, _ iY: Float, _ iB: Float) -> Float {
+    let magic = magicColors
+    
+    let x0 = cubicInterpolation(iB, magic[0][0], magic[4][0])
+    let x1 = cubicInterpolation(iB, magic[1][0], magic[5][0])
+    let x2 = cubicInterpolation(iB, magic[2][0], magic[6][0])
+    let x3 = cubicInterpolation(iB, magic[3][0], magic[7][0])
+    let y0 = cubicInterpolation(iY, x0, x1)
+    let y1 = cubicInterpolation(iY, x2, x3)
+    return cubicInterpolation(iR, y0, y1)
+  }
   
-  x0 = cubicInterpolation(blue, a: 1.0, b: 0.373)
-  x1 = cubicInterpolation(blue, a: 1.0, b: 0.66)
-  x2 = cubicInterpolation(blue, a: 0.0, b: 0.0)
-  x3 = cubicInterpolation(blue, a: 0.5, b: 0.094)
-  y0 = cubicInterpolation(yellow, a: x0, b: x1)
-  y1 = cubicInterpolation(yellow, a: x2, b: x3)
-  let green = cubicInterpolation(red, a: y0, b: y1)
+  func getGreen(iR: Float, _ iY: Float, _ iB: Float) -> Float {
+    let magic = magicColors
+    
+    let x0 = cubicInterpolation(iB, magic[0][1], magic[4][1])
+    let x1 = cubicInterpolation(iB, magic[1][1], magic[5][1])
+    let x2 = cubicInterpolation(iB, magic[2][1], magic[6][1])
+    let x3 = cubicInterpolation(iB, magic[3][1], magic[7][1])
+    let y0 = cubicInterpolation(iY, x0, x1)
+    let y1 = cubicInterpolation(iY, x2, x3)
+    return cubicInterpolation(iR, y0, y1)
+  }
   
-  x0 = cubicInterpolation(blue, a: 1.0, b: 0.6)
-  x1 = cubicInterpolation(blue, a: 0.0, b: 0.2)
-  x2 = cubicInterpolation(blue, a: 0.0, b: 0.5)
-  x3 = cubicInterpolation(blue, a: 0.0, b: 0.0)
-  y0 = cubicInterpolation(yellow, a: x0, b: x1)
-  y1 = cubicInterpolation(yellow, a: x2, b: x3)
-  let blue = cubicInterpolation(red, a: y0, b: y1)
+  func getBlue(iR: Float, _ iY: Float, _ iB: Float) -> Float {
+    let magic = magicColors
+    
+    let x0 = cubicInterpolation(iB, magic[0][2], magic[4][2])
+    let x1 = cubicInterpolation(iB, magic[1][2], magic[5][2])
+    let x2 = cubicInterpolation(iB, magic[2][2], magic[6][2])
+    let x3 = cubicInterpolation(iB, magic[3][2], magic[7][2])
+    let y0 = cubicInterpolation(iY, x0, x1)
+    let y1 = cubicInterpolation(iY, x2, x3)
+    return cubicInterpolation(iR, y0, y1)
+  }
   
-  return sanitize(red, g: green, b: blue)
-}
-
-private func sanitize(r: Float, g: Float, b: Float) -> (Float, Float, Float) {
-  var red: Float = r
-  var green: Float = g
-  var blue: Float = b
+  let r = getRed(red, yellow, blue)
+  let g = getGreen(red, yellow, blue)
+  let b = getBlue(red, yellow, blue)
   
-  red = 0 != signbit(red) ? red * -1.0 : red
-  red = (1.0 > (red * (100000.0))) ? 0.0 : (1.0 < red) ? 1.0 : red
-  
-  green = 0 != (signbit(green)) ? green * -1.0 : green
-  green = (1.0 > (green * (100000.0))) ? 0.0 : (1.0 < green) ? 1.0 : green
-  
-  blue = 0 != (signbit(blue)) ? blue * -1.0 : blue;
-  blue = (1.0 > (blue * (100000.0))) ? 0.0 : (1.0 < blue) ? 1.0 : blue
-  
-  print(red, green, blue)
-  
-  return (red, green, blue)
+  return (r, g, b)
 }

@@ -109,8 +109,12 @@ public class Color {
   }
   
   var hexString: String {
-    let rgb = RGBVector.toFloatTuple()
-    return String(format:"%2X", Int(rgb.0 * 255)) + String(format:"%2X", Int(rgb.1 * 255)) + String(format:"%2X", Int(rgb.2 * 255))
+    let r: Float = self.red() 
+    let g: Float = self.green()
+    let b: Float = self.blue()
+    
+    return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+    
   }
   
   // Tupples

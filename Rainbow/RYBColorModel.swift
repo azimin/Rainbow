@@ -16,37 +16,37 @@ struct RYBColorModel {
       return Color(hexString: "FF0000")
     }
     static var vermilion: Color {
-      return Color(hexString: "FF7400")
+      return Color(hexString: "FF3F00")
     }
     static var orange: Color {
-      return Color(hexString: "FFAA00")
+      return Color(hexString: "FF7F00")
     }
     static var amber: Color {
-      return  Color(hexString: "FFD300")
+      return  Color(hexString: "FFBF00")
     }
     static var yellow: Color {
       return Color(hexString: "FFFF00")
     }
     static var chartreuse: Color {
-      return  Color(hexString: "9FEE00")
+      return  Color(hexString: "7FD319")
     }
     static var green: Color {
-      return Color(hexString: "00CC00")
+      return Color(hexString: "00A832")
     }
     static var teal: Color {
-      return Color(hexString: "009999")
+      return Color(hexString: "148365")
     }
     static var blue: Color {
-      return Color(hexString: "1240AB")
+      return Color(hexString: "295F99")
     }
     static var violet: Color {
-      return Color(hexString: "3914AF")
+      return Color(hexString: "542F8C")
     }
     static var purple: Color {
-      return Color(hexString: "7109AA")
+      return Color(hexString: "7F007F")
     }
     static var mangenta: Color {
-      return Color(hexString: "CD0074")
+      return Color(hexString: "BF003F")
     }
     
     static let colors = [red, vermilion, orange, amber, yellow, chartreuse, green, teal, blue, violet, purple, mangenta]

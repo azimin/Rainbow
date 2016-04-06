@@ -17,18 +17,11 @@ protocol ColorWheelType {
 
 struct RYBColorWheel: ColorWheelType {
   static func colorAtAngle(angle: Int) -> Color {
-    let rightAngle = optimizeAngle(angle)
-    let info = RYBColorModel.colorsAtAngle(rightAngle)
-    
-    return ColorGradientTemplate(startColor: info.0.0, endColor: info.0.1).getColorBetweenWithPercentMove(info.1)
+    return RGBColorWheel.colorAtAngle(angle).convertRGBToRYB()
   }
   
   static func colorAtAngle(defaultColor: Color, angle: Int) -> Color {
-    let color = colorAtAngle(angle)
-    let hue = color.hsb.hue
-    let defaultHSB = defaultColor.hsl
-    // 
-    return Color(hue: hue, saturation: defaultHSB.saturation, luminosity: defaultHSB.luminosity, alpha: defaultColor.alpha)
+    return RGBColorWheel.colorAtAngle(defaultColor, angle: angle).convertRGBToRYB()
   }
   
   static func angleForColor(color: Color) -> Int {
@@ -53,10 +46,6 @@ struct RGBColorWheel: ColorWheelType {
     return color.hsb.hue
   }
 }
-
-// FF0000
-// FF4900 FF3800
-// FF7400
 
 private func optimizeAngle(angle: Int) -> UInt {
   let optimizeAngleValue: Int
