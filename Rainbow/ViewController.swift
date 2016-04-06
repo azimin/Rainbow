@@ -18,15 +18,10 @@ class ViewController: UIViewController {
     colorView.backgroundColor = color.UIColorValue
     
     
-    let contrastColor = color << Message.getSuchColor(.Red)
+//    let contrastColor = color << Message.getSuchColor(.Red)
+    let contrastColor = color << Message.effect.NotVeryContrast
     secondColorView.backgroundColor = contrastColor.UIColorValue
 
-//    let color = Color(hexString: "FF0000")
-//    let newColor = RGBColorWheel.colorAtAngle(color, angle: angle)
-//    colorView.backgroundColor = newColor.UIColorValue
-//    
-//    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
-//    secondColorView.backgroundColor = wheelAction.complementary(newColor).complementary.UIColorValue
   }
   
   func colorTake(color: UIColor) {

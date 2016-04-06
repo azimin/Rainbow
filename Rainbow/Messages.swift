@@ -13,11 +13,15 @@ struct Message {
     return ColorMessageContrast()
   }
   
-  static func getSuchColor(colorOnPlate: ColorsPlate) -> ColorMessagePlate {
-    return ColorMessagePlate(colorPlate: colorOnPlate)
+  static func getSuchColor(colorOnPlate: RYBColorPlate) -> ColorMessageSingleColorGenerate {
+    return ColorMessageSingleColorGenerate(colorPlate: colorOnPlate)
   }
   
-  static func getSuchColor(color: Color) -> ColorMessagePlate {
-    return ColorMessagePlate(color: color)
+  static func getSuchColor(color: Color) -> ColorMessageSingleColorGenerate {
+    return ColorMessageSingleColorGenerate(color: color)
+  }
+  
+  static var effect: ColorMessageEffect.Type {
+    return ColorMessageEffect.self
   }
 }

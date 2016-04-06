@@ -15,8 +15,11 @@
 		927C45521CB584AA00B765F3 /* ColorMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C45511CB584AA00B765F3 /* ColorMessageType.swift */; };
 		927C45541CB586F600B765F3 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C45531CB586F600B765F3 /* Messages.swift */; };
 		92A7EA6B1CB5C3EB008DEA5F /* ColorMessageContrast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA6A1CB5C3EB008DEA5F /* ColorMessageContrast.swift */; };
-		92A7EA6D1CB5C418008DEA5F /* ColorMessagePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA6C1CB5C418008DEA5F /* ColorMessagePlate.swift */; };
+		92A7EA6D1CB5C418008DEA5F /* ColorMessageSingleColorGenerate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA6C1CB5C418008DEA5F /* ColorMessageSingleColorGenerate.swift */; };
 		92A7EA6F1CB5C59B008DEA5F /* Color+Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA6E1CB5C59B008DEA5F /* Color+Bridge.swift */; };
+		92A7EA721CB5D009008DEA5F /* ColorPlates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA711CB5D009008DEA5F /* ColorPlates.swift */; };
+		92A7EA741CB5D0A3008DEA5F /* ColorMessagePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA731CB5D0A3008DEA5F /* ColorMessagePlate.swift */; };
+		92A7EA761CB5D117008DEA5F /* ColorMessageEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A7EA751CB5D117008DEA5F /* ColorMessageEffect.swift */; };
 		92C0F05D1C4CE5FB00D13698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F05C1C4CE5FB00D13698 /* AppDelegate.swift */; };
 		92C0F05F1C4CE5FB00D13698 /* ColorFromImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F05E1C4CE5FB00D13698 /* ColorFromImageViewController.swift */; };
 		92C0F0621C4CE5FB00D13698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C0F0601C4CE5FB00D13698 /* Main.storyboard */; };
@@ -29,7 +32,7 @@
 		92C0F0781C4CEEBE00D13698 /* LABColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F0771C4CEEBE00D13698 /* LABColor.swift */; };
 		92C0F0851C4CF9A000D13698 /* RainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F0841C4CF9A000D13698 /* RainbowTests.swift */; };
 		92C0F08D1C4CF9B000D13698 /* LABColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F08C1C4CF9B000D13698 /* LABColorTests.swift */; };
-		92C0F0C51C4D085600D13698 /* ColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F0C41C4D085600D13698 /* ColorCollection.swift */; };
+		92C0F0C51C4D085600D13698 /* Color+Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C0F0C41C4D085600D13698 /* Color+Collections.swift */; };
 		92C463A81CB3319800FF5932 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463A71CB3319800FF5932 /* ViewController.swift */; };
 		92C463AA1CB332A900FF5932 /* Color+HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463A91CB332A900FF5932 /* Color+HSB.swift */; };
 		92C463AC1CB333C800FF5932 /* ColorWheels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C463AB1CB333C800FF5932 /* ColorWheels.swift */; };
@@ -65,8 +68,11 @@
 		927C45511CB584AA00B765F3 /* ColorMessageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessageType.swift; sourceTree = "<group>"; };
 		927C45531CB586F600B765F3 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		92A7EA6A1CB5C3EB008DEA5F /* ColorMessageContrast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessageContrast.swift; sourceTree = "<group>"; };
-		92A7EA6C1CB5C418008DEA5F /* ColorMessagePlate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessagePlate.swift; sourceTree = "<group>"; };
+		92A7EA6C1CB5C418008DEA5F /* ColorMessageSingleColorGenerate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessageSingleColorGenerate.swift; sourceTree = "<group>"; };
 		92A7EA6E1CB5C59B008DEA5F /* Color+Bridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Bridge.swift"; sourceTree = "<group>"; };
+		92A7EA711CB5D009008DEA5F /* ColorPlates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPlates.swift; sourceTree = "<group>"; };
+		92A7EA731CB5D0A3008DEA5F /* ColorMessagePlate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessagePlate.swift; sourceTree = "<group>"; };
+		92A7EA751CB5D117008DEA5F /* ColorMessageEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessageEffect.swift; sourceTree = "<group>"; };
 		92C0F0591C4CE5FB00D13698 /* Rainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C0F05C1C4CE5FB00D13698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92C0F05E1C4CE5FB00D13698 /* ColorFromImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFromImageViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +90,7 @@
 		92C0F0841C4CF9A000D13698 /* RainbowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainbowTests.swift; sourceTree = "<group>"; };
 		92C0F0861C4CF9A000D13698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C0F08C1C4CF9B000D13698 /* LABColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LABColorTests.swift; sourceTree = "<group>"; };
-		92C0F0C41C4D085600D13698 /* ColorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
+		92C0F0C41C4D085600D13698 /* Color+Collections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Collections.swift"; sourceTree = "<group>"; };
 		92C463A71CB3319800FF5932 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92C463A91CB332A900FF5932 /* Color+HSB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+HSB.swift"; sourceTree = "<group>"; };
 		92C463AB1CB333C800FF5932 /* ColorWheels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorWheels.swift; sourceTree = "<group>"; };
@@ -141,9 +147,20 @@
 				927C45531CB586F600B765F3 /* Messages.swift */,
 				927C45511CB584AA00B765F3 /* ColorMessageType.swift */,
 				92A7EA6A1CB5C3EB008DEA5F /* ColorMessageContrast.swift */,
-				92A7EA6C1CB5C418008DEA5F /* ColorMessagePlate.swift */,
+				92A7EA6C1CB5C418008DEA5F /* ColorMessageSingleColorGenerate.swift */,
+				92A7EA731CB5D0A3008DEA5F /* ColorMessagePlate.swift */,
+				92A7EA751CB5D117008DEA5F /* ColorMessageEffect.swift */,
 			);
 			name = Messages;
+			sourceTree = "<group>";
+		};
+		92A7EA701CB5CFFD008DEA5F /* Plate+Collections */ = {
+			isa = PBXGroup;
+			children = (
+				92C0F0C41C4D085600D13698 /* Color+Collections.swift */,
+				92A7EA711CB5D009008DEA5F /* ColorPlates.swift */,
+			);
+			name = "Plate+Collections";
 			sourceTree = "<group>";
 		};
 		92C0F0501C4CE5FB00D13698 = {
@@ -183,7 +200,6 @@
 		92C0F0721C4CE68B00D13698 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				92C0F0C31C4D084D00D13698 /* Collections */,
 				92C0F06E1C4CE62600D13698 /* Color.swift */,
 				9238A3131C9F456800E38C46 /* Color+RGB.swift */,
 				92C463A91CB332A900FF5932 /* Color+HSB.swift */,
@@ -191,6 +207,7 @@
 				92C463AD1CB3395500FF5932 /* Color+RYB.swift */,
 				927C454E1CB57FBD00B765F3 /* Color+Contrast.swift */,
 				92A7EA6E1CB5C59B008DEA5F /* Color+Bridge.swift */,
+				92A7EA701CB5CFFD008DEA5F /* Plate+Collections */,
 				927C45501CB5849A00B765F3 /* Messages */,
 				927C454D1CB57E0100B765F3 /* Contrast */,
 				92C463B51CB41BD800FF5932 /* ColorWheels */,
@@ -212,14 +229,6 @@
 				92C0F0861C4CF9A000D13698 /* Info.plist */,
 			);
 			path = RainbowTests;
-			sourceTree = "<group>";
-		};
-		92C0F0C31C4D084D00D13698 /* Collections */ = {
-			isa = PBXGroup;
-			children = (
-				92C0F0C41C4D085600D13698 /* ColorCollection.swift */,
-			);
-			name = Collections;
 			sourceTree = "<group>";
 		};
 		92C33DF51C9F27FA00ECA748 /* ColorCompare */ = {
@@ -396,6 +405,7 @@
 				92A7EA6B1CB5C3EB008DEA5F /* ColorMessageContrast.swift in Sources */,
 				92A7EA6F1CB5C59B008DEA5F /* Color+Bridge.swift in Sources */,
 				92C463AA1CB332A900FF5932 /* Color+HSB.swift in Sources */,
+				92A7EA741CB5D0A3008DEA5F /* ColorMessagePlate.swift in Sources */,
 				927C45541CB586F600B765F3 /* Messages.swift in Sources */,
 				92C463B91CB4603B00FF5932 /* RYBColorModelAngleToHue.swift in Sources */,
 				92C463BB1CB473F700FF5932 /* Dictionary-Extensions.swift in Sources */,
@@ -405,23 +415,25 @@
 				92C0F05F1C4CE5FB00D13698 /* ColorFromImageViewController.swift in Sources */,
 				92C0F0711C4CE68100D13698 /* UIColor-Extensions.swift in Sources */,
 				92EF101D1C9F65E800BE9AD3 /* Vector3D.swift in Sources */,
-				92C0F0C51C4D085600D13698 /* ColorCollection.swift in Sources */,
+				92C0F0C51C4D085600D13698 /* Color+Collections.swift in Sources */,
 				927C45521CB584AA00B765F3 /* ColorMessageType.swift in Sources */,
 				9238A3121C9F42EC00E38C46 /* Double-Extensions.swift in Sources */,
 				9238A3231C9F4E1700E38C46 /* ColorOnImage.swift in Sources */,
 				92C0F0761C4CED5B00D13698 /* ColorCompare.swift in Sources */,
+				92A7EA761CB5D117008DEA5F /* ColorMessageEffect.swift in Sources */,
 				92C463B71CB44F6100FF5932 /* ColorWheelBasicActions.swift in Sources */,
 				92F777F71C9F0F7700F72C77 /* ColorDifference.swift in Sources */,
 				92C463A81CB3319800FF5932 /* ViewController.swift in Sources */,
 				92F777FA1C9F10F000F72C77 /* Float-Extensions.swift in Sources */,
 				92C0F06F1C4CE62600D13698 /* Color.swift in Sources */,
 				92C0F05D1C4CE5FB00D13698 /* AppDelegate.swift in Sources */,
-				92A7EA6D1CB5C418008DEA5F /* ColorMessagePlate.swift in Sources */,
+				92A7EA6D1CB5C418008DEA5F /* ColorMessageSingleColorGenerate.swift in Sources */,
 				92C463AC1CB333C800FF5932 /* ColorWheels.swift in Sources */,
 				92C0F0781C4CEEBE00D13698 /* LABColor.swift in Sources */,
 				9238A3141C9F456800E38C46 /* Color+RGB.swift in Sources */,
 				92C463B11CB3F33D00FF5932 /* RYBColorModel.swift in Sources */,
 				92C463BD1CB48DAA00FF5932 /* Color+HSL.swift in Sources */,
+				92A7EA721CB5D009008DEA5F /* ColorPlates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
