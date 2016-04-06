@@ -21,3 +21,9 @@ internal extension Float {
 internal func C(a: Float, b: Float) -> Float {
   return sqrt(pow(a, 2) + pow(b, 2))
 }
+
+extension Float {
+  static func random() -> Float {
+    return Double.random().toFloat()
+  }
+}

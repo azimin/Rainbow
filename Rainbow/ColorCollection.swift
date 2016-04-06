@@ -34,6 +34,10 @@ extension Color {
   static func blueColor() -> Color {
     return Color(red: 0.0, green: 0, blue: 1)
   }
+  
+  static func randomColor() -> Color {
+    return Color(red: Float.random(), green: Float.random(), blue: Float.random())
+  }
 }
 
 // Complex

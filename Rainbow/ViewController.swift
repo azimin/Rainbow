@@ -12,29 +12,42 @@ class ViewController: UIViewController {
   
   @IBAction func sliderAction(sender: UISlider) {
     let angle = Int(sender.value * 360)
-    let color = Color(hexString: "FF0000")
-    colorView.backgroundColor = RGBColorWheel.colorAtAngle(color, angle: angle).UIColorValue
+    print(RYBColorModelAngleToHue.RYBStopToHSVStopMap(angle))
+    test()
+//    let color = Color(hexString: "FF0000")
+//    let newColor = RGBColorWheel.colorAtAngle(color, angle: angle)
+//    colorView.backgroundColor = newColor.UIColorValue
+//    
+//    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
+//    secondColorView.backgroundColor = wheelAction.complementary(newColor).complementary.UIColorValue
   }
   
   @IBOutlet weak var stackView: UIStackView!
   var colorView: UIView!
+  var secondColorView: UIView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     print(Color(hexString: "FF0000").hsb)
-    
-//    addColor(Color(hexString: "15858F"))
-//    addColor(Color(hexString: "53A9B1"))
-//    addColor(Color(hexString: "308E97"))
-//    addColor(Color(hexString: "086A73"))
-//    addColor(Color(hexString: "01545B"))
+    RYBColorModel.angleFromColor(Color.redColor())
 
-    let angle = -40
-    let colro = RYBColorWheel.colorAtAngle(angle)
-    addColor(colro)
+    addColor(Color(hue: 0, saturation: 0.57, lightness: 0.45))
+    addColor(Color(hue: 17, saturation: 0.57, lightness: 0.45))
+    addColor(Color(hue: 27, saturation: 0.57, lightness: 0.45))
     
+    print(Color(hue: 17, saturation: 0.57, lightness: 0.45).RGBVector)
+    print(Color(hue: 27, saturation: 0.57, lightness: 0.45).hexString)
     
+//    let newColor = Color.redColor()
+//    let wheelAction = ColorWheelAction(colorWheel: RGBColorWheel.self)
+//    let colors = wheelAction.rectangle(newColor, secondColorLocation: .Right)
+//    
+//    addColor(colors.firstPair.0)
+//    addColor(colors.firstPair.1)
+//    
+//    addColor(colors.secondPair.0)
+//    addColor(colors.secondPair.1)
     
 //    addColor(Color(red: 0.75, yellow: 0.25, blue: 0))
 //    addColor(Color(red: 0.5, yellow: 0.5, blue: 0))
@@ -44,8 +57,16 @@ class ViewController: UIViewController {
 //    addColor(Color(red: 0, yellow: 0.5, blue: 0.5))
 //    addColor(Color(red: 0, yellow: 0.25, blue: 0.75))
 //    addColor(Color(red: 0, yellow: 0, blue: 1))
-    
     // Do any additional setup after loading the view.
+  }
+  
+  func test() {
+    let newColor = Color.randomColor()
+    colorView.backgroundColor = newColor.UIColorValue
+    
+    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
+    secondColorView.backgroundColor = wheelAction.splitComplementary(newColor).complementaryLeft
+      .UIColorValue
   }
   
   override func didReceiveMemoryWarning() {
@@ -59,7 +80,11 @@ class ViewController: UIViewController {
     view.widthAnchor.constraintEqualToConstant(50).active = true
     view.backgroundColor = color.UIColorValue
     
-    colorView = view
+    if colorView != nil {
+      secondColorView = view
+    } else {
+      colorView = view
+    }
     
     stackView.addArrangedSubview(view)
   }

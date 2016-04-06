@@ -20,6 +20,6 @@ extension Color {
   convenience init(hue: Int, saturation: Float, brightness: Float, alpha: CGFloat = 1) {
     let realHue = Float(hue % 360) / 360.0
     let color = UIColor(hue: realHue.toCGFloat(), saturation: saturation.toCGFloat(), brightness: brightness.toCGFloat(), alpha: alpha)
-    self.init(color: color)!
+    self.init(color: color)
   }
 }

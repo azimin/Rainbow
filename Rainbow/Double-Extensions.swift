@@ -17,3 +17,9 @@ internal extension Double {
     return Float(self)
   }
 }
+
+extension Double {
+  static func random() -> Double {
+    return drand48()
+  }
+}
