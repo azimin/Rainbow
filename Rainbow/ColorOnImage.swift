@@ -10,8 +10,8 @@
 
 import UIKit
 
-public enum GroupingAccuracy {
-  case Low // CIE 76
+public enum GroupingAccuracy: Int {
+  case Low = 0 // CIE 76
   case Medium // CIE 94
   case High // CIE 2000
 }
@@ -20,6 +20,7 @@ struct DefaultParameterValues {
   static var maxSampledPixels: Int = 1000
   static var accuracy: GroupingAccuracy = .Medium
   static var seed: UInt32 = 3571
+  static var numberOfGeneratedColols = 6
 }
 
 private struct RGBAPixel {
@@ -54,6 +55,7 @@ class ColorOnImage {
   static func dominantColorsInImage(
     image: CGImage,
     maxSampledPixels: Int = DefaultParameterValues.maxSampledPixels,
+    numberOfGeneratedColols: Int = DefaultParameterValues.numberOfGeneratedColols,
     accuracy: GroupingAccuracy = DefaultParameterValues.accuracy,
     seed: UInt32 = DefaultParameterValues.seed) -> [Color] {
       
@@ -85,7 +87,7 @@ class ColorOnImage {
         }
       }
       // Cluster the colors using the k-means algorithm
-      let k = selectKForElements(labValues)
+      let k = numberOfGeneratedColols
       
       
       var clusters = kmeans(labValues, k: k, seed: seed, distance: distanceForAccuracy(accuracy))
@@ -152,10 +154,5 @@ class ColorOnImage {
         handler(x, y, data[Int(x + y * width)])
       }
     }
-  }
-  
-  private static func selectKForElements<T>(elements: [T]) -> Int {
-    // Seems like a magic number...
-    return 6
   }
 }

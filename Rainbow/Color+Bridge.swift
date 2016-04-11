@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension Color: CustomStringConvertible {
+  public var description: String {
+    return "\(self.dynamicType) \(self.hexString)"
+  }
+}
+
 extension Color: _ObjectiveCBridgeable {
   public typealias _ObjectiveCType = UIColor
   

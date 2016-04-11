@@ -152,6 +152,10 @@ final public class Color {
     return UIColor(red: red(), green: green(), blue: blue(), alpha: alpha.toCGFloat())
   }
   
+  var CGColorValue: CGColor {
+    return UIColorValue.CGColor
+  }
+  
   var RGBValue: RGB {
     var result: RGB = .Red
     var minimalValue = ColorCompare(firstColor: self, secondColor: Color.redColor()).CIE76

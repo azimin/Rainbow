@@ -19,6 +19,10 @@ extension Color {
     return Color(red: 1.0, green: 1, blue: 1)
   }
   
+  static func lightGreyColor() -> Color {
+    return Color(hexString: "D8D8D8")
+  }
+  
   static func yellowColor() -> Color {
     return Color(red: 1.0, green: 1, blue: 0)
   }
