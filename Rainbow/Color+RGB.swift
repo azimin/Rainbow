@@ -10,38 +10,38 @@ import UIKit
 
 extension Color {  
   func red() -> Float {
-    return self.floatRGBVector.red
+    return RGBVector.x
   }
   
   func green() -> Float {
-    return self.floatRGBVector.green
+    return RGBVector.y
   }
   
   func blue() -> Float {
-    return self.floatRGBVector.blue
+    return RGBVector.z
   }
   
   func red() -> CGFloat {
-    return self.cgfloatRGBVector.red
+    return RGBVector.x.toCGFloat()
   }
   
   func green() -> CGFloat {
-    return self.cgfloatRGBVector.green
+    return RGBVector.y.toCGFloat()
   }
   
   func blue() -> CGFloat {
-    return self.cgfloatRGBVector.blue
+    return RGBVector.z.toCGFloat()
   }
   
   func red() -> Double {
-    return self.doubleRGBVector.red
+    return RGBVector.x.toDouble()
   }
   
   func green() -> Double {
-    return self.doubleRGBVector.green
+    return RGBVector.x.toDouble()
   }
   
   func blue() -> Double {
-    return self.doubleRGBVector.blue
+    return RGBVector.x.toDouble()
   }
 }

@@ -32,7 +32,7 @@ class ColorTableViewCell: UITableViewCell {
       colorView.layer.borderWidth = shouldUseBorder ? 1 : 0
       
       colorView.backgroundColor = color.UIColorValue
-      colorNameLabel.text = color.hexString
+      colorNameLabel.text = ColorNamesCollection.getColorName(color)
     }
   }
 }

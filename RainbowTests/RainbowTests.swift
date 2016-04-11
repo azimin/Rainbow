@@ -9,31 +9,35 @@
 import XCTest
 @testable import Rainbow
 
-var numberOfMeasures = 100000
+var numberOfMeasures = 1000000
 
-class RainbowTests: XCTestCase {
+class PerformanceTests: XCTestCase {
   
-  override func setUp() {
-    super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
-  
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
-  
-  func testExample() {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-  }
-  
-  func testPerformanceExample() {
+  func testColorPerformanceExample() {
     // This is an example of a performance test case.
     self.measureBlock {
-//      for _ in 0..<numberOfMeasures {
-//        let labColor = LABColor(r: 0.5, g: 0.5, b: 0.5)
-//      }
+      for _ in 0..<numberOfMeasures {
+        _ = Color(red: 0.5, green: 0.55, blue: 0.45)
+      }
     }
   }
+  
+  func testUIColorPerformanceExample() {
+    // This is an example of a performance test case.
+    self.measureBlock {
+      for _ in 0..<numberOfMeasures {
+        _ = UIColor(red: 0.5, green: 0.55, blue: 0.45, alpha: 1.0)
+      }
+    }
+  }
+  
+//  func testColorActionPerformanceExample() {
+//    // This is an example of a performance test case.
+//    self.measureBlock {
+//      for _ in 0..<numberOfMeasures {
+//        let color = Color(red: 0.5, green: 0.55, blue: 0.45)
+//        _ = LABColor(labVector: color.RGBVector)
+//      }
+//    }
+//  }
 }

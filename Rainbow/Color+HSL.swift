@@ -17,7 +17,7 @@ extension Color {
     return (Int(round(hsl.h * 360)), hsl.s, hsl.l) 
   }
   
-  convenience init(hue: Int, saturation: Float, luminosity: Float, alpha: Float = 1) {
+  init(hue: Int, saturation: Float, luminosity: Float, alpha: Float = 1) {
     let realHue = Float(hue % 360) / 360.0
     var rgb: (r: Float, g: Float, b: Float) = (0, 0, 0) 
     HSL2RGB(realHue, saturation, luminosity,  &(rgb.r), &(rgb.g), &(rgb.b))

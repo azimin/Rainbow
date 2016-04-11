@@ -19,6 +19,12 @@ struct Vector3D: OptimizeVector3DType {
     self.z = z
   }
   
+  init(tuple: (Float, Float, Float)) {
+    self.x = tuple.0
+    self.y = tuple.1
+    self.z = tuple.2
+  }
+  
   func toFloatTuple() -> (Float, Float, Float) {
     return (x, y, z)
   }

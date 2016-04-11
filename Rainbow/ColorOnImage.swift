@@ -103,23 +103,6 @@ class ColorOnImage {
       
   }
   
-  private static func distanceForAccuracy(accuracy: GroupingAccuracy) -> (Vector3D, Vector3D) -> Float {
-    switch accuracy {
-    case .Low:
-      return CIE76SquaredColorDifferenceFunction
-    case .Medium:
-      return {
-        (lab1: Vector3D, lab2: Vector3D) -> Float in
-        return CIE94SquaredColorDifferenceFunction(lab1: lab1, lab2: lab2)
-      }
-    case .High:
-      return {
-        (lab1: Vector3D, lab2: Vector3D) -> Float in
-        return CIE2000SquaredColorDifferenceFunction(lab1: lab1, lab2: lab2)
-      }
-    }
-  }
-  
   private static func scaledDimensionsForPixelLimit(limit: Int, width: Int, height: Int) -> (Int, Int) {
     if (width * height > limit) {
       let ratio = Float(width) / Float(height)
@@ -152,6 +135,23 @@ class ColorOnImage {
       for x in 0..<width {
         handler(x, y, data[Int(x + y * width)])
       }
+    }
+  }
+}
+
+func distanceForAccuracy(accuracy: GroupingAccuracy) -> (Vector3D, Vector3D) -> Float {
+  switch accuracy {
+  case .Low:
+    return CIE76SquaredColorDifferenceFunction
+  case .Medium:
+    return {
+      (lab1: Vector3D, lab2: Vector3D) -> Float in
+      return CIE94SquaredColorDifferenceFunction(lab1: lab1, lab2: lab2)
+    }
+  case .High:
+    return {
+      (lab1: Vector3D, lab2: Vector3D) -> Float in
+      return CIE2000SquaredColorDifferenceFunction(lab1: lab1, lab2: lab2)
     }
   }
 }

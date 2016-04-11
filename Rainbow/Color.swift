@@ -19,30 +19,30 @@ struct ColorCollection {
   var rule: (() -> ())?
 }
 
-final public class Color {
-  var RGBVector: OptimizeVector3DType
+public struct Color {
+  var RGBVector: Vector3D
   var alpha: Float = 1.0
   
   init() {
-    RGBVector = Optimize3DFloatVector(x: 1.0, y: 1.0, z: 1.0)
+    RGBVector = Vector3D(x: 1.0, y: 1.0, z: 1.0)
   }
   
   init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) {
-    RGBVector = Optimize3DCGFloatVector(x: red, y: green, z: blue)
+    RGBVector = Vector3D(x: red.toFloat(), y: green.toFloat(), z: blue.toFloat())
     self.alpha = alpha.toFloat()
   }
   
   init(red: Double, green: Double, blue: Double, alpha: Double = 1.0) {
-    RGBVector = Optimize3DDoubleVector(x: red, y: green, z: blue)
+    RGBVector = Vector3D(x: red.toFloat(), y: green.toFloat(), z: blue.toFloat())
     self.alpha = alpha.toFloat()
   }
   
   init(red: Float, green: Float, blue: Float, alpha: Float = 1.0) {
-    RGBVector = Optimize3DFloatVector(x: red, y: green, z: blue)
+    RGBVector = Vector3D(x: red, y: green, z: blue)
     self.alpha = alpha
   }
   
-  convenience init!(color: UIColor) {
+  init(color: UIColor) {
     let cgColor = color.CGColor
     
     let numberOfComponents = CGColorGetNumberOfComponents(cgColor)
@@ -65,14 +65,14 @@ final public class Color {
     self.init(red: red, green: green, blue: blue, alpha: alpha)
   }
   
-  convenience init?(color: UIColor?) {
+  init?(color: UIColor?) {
     guard let color = color else {
       return nil
     }
     self.init(color: color)
   }
   
-  convenience init(hexString: String) {
+  init(hexString: String) {
     var hex = hexString
     
     if hex.hasPrefix("#") {
@@ -125,37 +125,6 @@ final public class Color {
     let b: Float = self.blue()
     
     return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
-  }
-  
-  // Tupples
-  private var _floatRGBVector: (red: Float, green: Float, blue: Float)?
-  internal var floatRGBVector: (red: Float, green: Float, blue: Float) {
-    var value = _floatRGBVector
-    if value == nil {
-      value = RGBVector.toFloatTuple()
-      _floatRGBVector = value
-    }
-    return value!
-  }
-  
-  private var _cgfloatRGBVector: (red: CGFloat, green: CGFloat, blue: CGFloat)?
-  internal var cgfloatRGBVector: (red: CGFloat, green: CGFloat, blue: CGFloat) {
-    var value = _cgfloatRGBVector
-    if value == nil {
-      value = RGBVector.toCGFloatTuple()
-      _cgfloatRGBVector = value
-    }
-    return value!
-  }
-  
-  private var _doubleRGBVector: (red: Double, green: Double, blue: Double)?
-  internal var doubleRGBVector: (red: Double, green: Double, blue: Double) {
-    var value = _doubleRGBVector
-    if value == nil {
-      value = RGBVector.toDoubleTuple()
-      _doubleRGBVector = value
-    }
-    return value!
   }
   
   var UIColorValue: UIColor {

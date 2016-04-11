@@ -17,7 +17,7 @@ extension Color {
     return (Int(round(hsb.h * 360)), hsb.s.toFloat(), hsb.b.toFloat())
   }
   
-  convenience init(hue: Int, saturation: Float, brightness: Float, alpha: CGFloat = 1) {
+  init(hue: Int, saturation: Float, brightness: Float, alpha: CGFloat = 1) {
     let realHue = Float(hue % 360) / 360.0
     let color = UIColor(hue: realHue.toCGFloat(), saturation: saturation.toCGFloat(), brightness: brightness.toCGFloat(), alpha: alpha)
     self.init(color: color)

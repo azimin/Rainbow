@@ -11,7 +11,7 @@ import UIKit
 typealias RYB = (red: Float, yellow: Float, blue: Float)
 
 extension Color {
-  convenience init(red: Float, yellow: Float, blue: Float, alpha: Float = 1) {
+  init(red: Float, yellow: Float, blue: Float, alpha: Float = 1) {
     let rgb = toRGB(red, yellow: yellow, blue: blue)
     self.init(red: rgb.0, green: rgb.1, blue: rgb.2, alpha: alpha)
   }
