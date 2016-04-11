@@ -44,10 +44,6 @@ class ColorsCollectionViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    for i in 0..<1000 {
-      colors.append(Color.randomColor())
-    }
     // Do any additional setup after loading the view.
   }
   

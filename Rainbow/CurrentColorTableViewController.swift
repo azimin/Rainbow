@@ -24,6 +24,7 @@ class CurrentColorTableViewController: UITableViewController {
   @IBOutlet weak var colorView: UIView!
   
   // Color labels
+  @IBOutlet weak var nameColorLabel: UILabel!
   @IBOutlet weak var hexColorLabel: UILabel!
   @IBOutlet weak var rgbColorLabel: UILabel!
   @IBOutlet weak var labColorLabel: UILabel!
@@ -47,6 +48,7 @@ class CurrentColorTableViewController: UITableViewController {
   func updateValue() {
     colorView.backgroundColor = color.UIColorValue
     
+    labelTitle(nameColorLabel, prefixString: "NAME:", sufixString: color.name)
     labelTitle(hexColorLabel, prefixString: "HEX:", sufixString: color.hexString)
     labelTitle(rgbColorLabel, prefixString: "RGB:", sufixString: converToString(color.RGBVector.toFloatTuple()))
     labelTitle(labColorLabel, prefixString: "LAB:", sufixString: converToString(color.lab))

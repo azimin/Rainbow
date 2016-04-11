@@ -119,6 +119,10 @@ public struct Color {
     return Color(red: self.red(), green: self.green(), blue: self.blue(), alpha: alpha)
   }
   
+  var name: String {
+    return ColorNamesCollection.getColorName(self)
+  }
+  
   var hexString: String {
     let r: Float = self.red() 
     let g: Float = self.green()

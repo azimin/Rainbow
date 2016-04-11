@@ -24,6 +24,6 @@ internal func C(a: Float, b: Float) -> Float {
 
 extension Float {
   static func random() -> Float {
-    return Double.random().toFloat()
+    return Float(arc4random()) /  Float(UInt32.max)
   }
 }

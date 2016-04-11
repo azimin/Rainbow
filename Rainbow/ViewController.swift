@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     let contrastColor = color << Message.effect.NotVeryContrast
     secondColorView.backgroundColor = contrastColor.UIColorValue
 
+    Color(hexString: "99B86F") << Message.getSuchColor(.Red)
+    
   }
   
   func colorTake(color: UIColor) {
