@@ -79,8 +79,7 @@ final public class Color {
       hex = hex.substringFromIndex(hex.startIndex.advancedBy(1))
     }
     
-    if (hex.rangeOfString("(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)", options: .RegularExpressionSearch) != nil) {
-      
+    if Color.isHexString(hex) {
       if hex.characters.count == 3 {
         let redHex   = hex.substringToIndex(hex.startIndex.advancedBy(1))
         
@@ -108,13 +107,24 @@ final public class Color {
     }
   }
   
+  static func isHexString(hexString: String) -> Bool {
+    var hex = hexString
+    if hex.hasPrefix("#") {
+      hex = hex.substringFromIndex(hex.startIndex.advancedBy(1))
+    }
+    return (hex.rangeOfString("(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)", options: .RegularExpressionSearch) != nil)
+  }
+  
+  func colorWithAlphaComponent(alpha: Float) -> Color {
+    return Color(red: self.red(), green: self.green(), blue: self.blue(), alpha: alpha)
+  }
+  
   var hexString: String {
     let r: Float = self.red() 
     let g: Float = self.green()
     let b: Float = self.blue()
     
     return String(format: "%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
-    
   }
   
   // Tupples
@@ -153,10 +163,10 @@ final public class Color {
   }
   
   var CGColorValue: CGColor {
-    return UIColorValue.CGColor
+    return CGColorCreate(CGColorSpaceCreateDeviceRGB(), [self.red(), self.green(), self.blue(), self.alpha.toCGFloat()])!
   }
   
-  var RGBValue: RGB {
+  var RGBClass: RGB {
     var result: RGB = .Red
     var minimalValue = ColorCompare(firstColor: self, secondColor: Color.redColor()).CIE76
     

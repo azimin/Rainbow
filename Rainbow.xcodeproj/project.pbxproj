@@ -14,6 +14,8 @@
 		9238A3251C9F589E00E38C46 /* KMean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9238A3241C9F589E00E38C46 /* KMean.swift */; };
 		924505B21CB6CF0C00F572A9 /* ColorsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924505B11CB6CF0C00F572A9 /* ColorsCollectionViewController.swift */; };
 		924505B61CB6CFBF00F572A9 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924505B51CB6CFBF00F572A9 /* ColorTableViewCell.swift */; };
+		924CFDAC1CBBC65B00E3D65A /* Color+LAB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CFDAB1CBBC65B00E3D65A /* Color+LAB.swift */; };
+		924CFDAF1CBBF5AF00E3D65A /* CurrentColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CFDAE1CBBF5AF00E3D65A /* CurrentColorTableViewController.swift */; };
 		927C454F1CB57FBD00B765F3 /* Color+Contrast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C454E1CB57FBD00B765F3 /* Color+Contrast.swift */; };
 		927C45521CB584AA00B765F3 /* ColorMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C45511CB584AA00B765F3 /* ColorMessageType.swift */; };
 		927C45541CB586F600B765F3 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927C45531CB586F600B765F3 /* Messages.swift */; };
@@ -73,6 +75,8 @@
 		9238A3241C9F589E00E38C46 /* KMean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMean.swift; sourceTree = "<group>"; };
 		924505B11CB6CF0C00F572A9 /* ColorsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewController.swift; sourceTree = "<group>"; };
 		924505B51CB6CFBF00F572A9 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
+		924CFDAB1CBBC65B00E3D65A /* Color+LAB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+LAB.swift"; sourceTree = "<group>"; };
+		924CFDAE1CBBF5AF00E3D65A /* CurrentColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentColorTableViewController.swift; sourceTree = "<group>"; };
 		927C454E1CB57FBD00B765F3 /* Color+Contrast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Contrast.swift"; sourceTree = "<group>"; };
 		927C45511CB584AA00B765F3 /* ColorMessageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorMessageType.swift; sourceTree = "<group>"; };
 		927C45531CB586F600B765F3 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 		924505B01CB6CEF500F572A9 /* ColorsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				924CFDAD1CBBF4CF00E3D65A /* CurrentColor */,
 				924505B31CB6CF9F00F572A9 /* ColorsConllection */,
 			);
 			name = ColorsViewControllers;
@@ -169,6 +174,14 @@
 				924505B51CB6CFBF00F572A9 /* ColorTableViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		924CFDAD1CBBF4CF00E3D65A /* CurrentColor */ = {
+			isa = PBXGroup;
+			children = (
+				924CFDAE1CBBF5AF00E3D65A /* CurrentColorTableViewController.swift */,
+			);
+			name = CurrentColor;
 			sourceTree = "<group>";
 		};
 		927C45501CB5849A00B765F3 /* Messages */ = {
@@ -261,6 +274,7 @@
 			children = (
 				92C0F06E1C4CE62600D13698 /* Color.swift */,
 				9238A3131C9F456800E38C46 /* Color+RGB.swift */,
+				924CFDAB1CBBC65B00E3D65A /* Color+LAB.swift */,
 				92C463A91CB332A900FF5932 /* Color+HSB.swift */,
 				92C463BC1CB48DAA00FF5932 /* Color+HSL.swift */,
 				92C463AD1CB3395500FF5932 /* Color+RYB.swift */,
@@ -461,6 +475,7 @@
 				924505B21CB6CF0C00F572A9 /* ColorsCollectionViewController.swift in Sources */,
 				92D2EF2E1C9F392B005027CD /* Optimize3DVector.swift in Sources */,
 				92C463B31CB402EE00FF5932 /* ColorGradientTemplate.swift in Sources */,
+				924CFDAF1CBBF5AF00E3D65A /* CurrentColorTableViewController.swift in Sources */,
 				92C0F0741C4CE75100D13698 /* CGFloat-Extensions.swift in Sources */,
 				92A7EA6B1CB5C3EB008DEA5F /* ColorMessageContrast.swift in Sources */,
 				92A7EA6F1CB5C59B008DEA5F /* Color+Bridge.swift in Sources */,
@@ -477,6 +492,7 @@
 				92EF101D1C9F65E800BE9AD3 /* Vector3D.swift in Sources */,
 				92C0F0C51C4D085600D13698 /* Color+Collections.swift in Sources */,
 				927C45521CB584AA00B765F3 /* ColorMessageType.swift in Sources */,
+				924CFDAC1CBBC65B00E3D65A /* Color+LAB.swift in Sources */,
 				9238A3121C9F42EC00E38C46 /* Double-Extensions.swift in Sources */,
 				9286D9D71CBA7F7D0061C8CF /* ColorsOnImageGenerateTableViewController.swift in Sources */,
 				9238A3231C9F4E1700E38C46 /* ColorOnImage.swift in Sources */,

@@ -16,8 +16,7 @@ extension ColorsCollectionViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ColorTableViewCell
     
-    cell.colorView.backgroundColor = colors[indexPath.row].UIColorValue
-    cell.colorNameLabel.text = colors[indexPath.row].hexString
+    cell.color = colors[indexPath.row]
     
     return cell
   }
@@ -28,7 +27,10 @@ extension ColorsCollectionViewController: UITableViewDataSource {
 }
 
 extension ColorsCollectionViewController: UITableViewDelegate {
-  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    self.performSegueWithIdentifier("ColorPreview", sender: indexPath)
+  }
 }
 
 class ColorsCollectionViewController: UIViewController {
@@ -42,8 +44,12 @@ class ColorsCollectionViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     // Do any additional setup after loading the view.
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let indexPath = sender as! NSIndexPath
+    let currentColorViewController = segue.destinationViewController as! CurrentColorTableViewController
+    currentColorViewController.color = colors[indexPath.row]
+  }
 }

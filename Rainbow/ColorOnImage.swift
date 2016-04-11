@@ -54,10 +54,9 @@ class ColorOnImage {
   
   static func dominantColorsInImage(
     image: CGImage,
-    maxSampledPixels: Int = DefaultParameterValues.maxSampledPixels,
-    numberOfGeneratedColols: Int = DefaultParameterValues.numberOfGeneratedColols,
+    numberOfGeneratedColors: Int = DefaultParameterValues.numberOfGeneratedColols,
     accuracy: GroupingAccuracy = DefaultParameterValues.accuracy,
-    seed: UInt32 = DefaultParameterValues.seed) -> [Color] {
+    maxSampledPixels: Int = DefaultParameterValues.maxSampledPixels) -> [Color] {
       
       let (width, height) = (CGImageGetWidth(image), CGImageGetHeight(image))
       let (scaledWidth, scaledHeight) = scaledDimensionsForPixelLimit(maxSampledPixels, width: width, height: height)
@@ -87,10 +86,10 @@ class ColorOnImage {
         }
       }
       // Cluster the colors using the k-means algorithm
-      let k = numberOfGeneratedColols
+      let k = numberOfGeneratedColors
       
       
-      var clusters = kmeans(labValues, k: k, seed: seed, distance: distanceForAccuracy(accuracy))
+      var clusters = kmeans(labValues, k: k, seed: DefaultParameterValues.seed, distance: distanceForAccuracy(accuracy))
       
       
       // Sort the clusters by size in descending order so that the

@@ -15,10 +15,12 @@ class ViewController: UIViewController {
     
     let color = Color.randomColor()
     
+    
+    
     colorView.backgroundColor = color.UIColorValue
     
     
-//    let contrastColor = color << Message.getSuchColor(.Red)
+    let suchRed = color << Message.getSuchColor(.Red)
     let contrastColor = color << Message.effect.NotVeryContrast
     secondColorView.backgroundColor = contrastColor.UIColorValue
 
@@ -34,6 +36,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     
 //    let newColor = Color.redColor()
 //    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)

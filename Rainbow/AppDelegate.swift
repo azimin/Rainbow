@@ -8,6 +8,8 @@
 
 import UIKit
 
+var colorInClipboard = Color.whiteColor()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

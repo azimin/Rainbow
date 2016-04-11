@@ -17,12 +17,22 @@ class ColorTableViewCell: UITableViewCell {
     super.awakeFromNib()
     self.layer.masksToBounds = true
     
-    colorView.layer.borderWidth = 10
+    colorView.layer.borderWidth = 1
     colorView.layer.borderColor = Color.lightGreyColor().CGColorValue
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
     colorView.layer.cornerRadius = colorView.frame.width / 2
+  }
+  
+  var color: Color = Color.whiteColor() {
+    didSet {
+      let shouldUseBorder = color.shouldUseBorder(Color.whiteColor())
+      colorView.layer.borderWidth = shouldUseBorder ? 1 : 0
+      
+      colorView.backgroundColor = color.UIColorValue
+      colorNameLabel.text = color.hexString
+    }
   }
 }

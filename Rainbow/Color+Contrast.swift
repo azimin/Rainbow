@@ -33,4 +33,9 @@ extension Color {
     
     return Color(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness)
   }
+  
+  func shouldUseBorder(color: Color) -> Bool {
+    let value = ColorCompare(firstColor: self, secondColor: color).CIE2000
+    return value < 20
+  }
 }

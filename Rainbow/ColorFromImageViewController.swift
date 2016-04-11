@@ -14,6 +14,9 @@ class ColorFromImageViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    imageView.layer.borderWidth = 1
+    imageView.layer.borderColor = Color.lightGreyColor().CGColorValue
   }
 
   override func didReceiveMemoryWarning() {
@@ -37,7 +40,7 @@ class ColorFromImageViewController: UIViewController {
 
 extension ColorFromImageViewController: ColorsOnImageGenerateDelegate {
   func colorsOnImageGenerateWithSelectedSettings(setting: ColorsOnImageGenerateSettings) {
-    let colors = ColorOnImage.dominantColorsInImage(imageView.image!.CGImage!, numberOfGeneratedColols: setting.numberOfColors, maxSampledPixels: 2000, accuracy: GroupingAccuracy(rawValue: setting.comressionType)!, seed: 100)
+    let colors = ColorOnImage.dominantColorsInImage(imageView.image!.CGImage!, numberOfGeneratedColors: setting.numberOfColors, maxSampledPixels: 2000, accuracy: GroupingAccuracy(rawValue: setting.comressionType)!)
     
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("ColorsCollectionViewController") as! ColorsCollectionViewController
     viewController.colors = colors
