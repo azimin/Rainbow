@@ -14,8 +14,17 @@ enum ColorMessageEffect: ColorMessageGenericType {
   case LessContrast
   case MoreContrast
   case NotVeryContrast
+  case ElementColor
+  case BorderColor
   
   func execute(color: Color) -> Color {
-    return color.balancedColor()
+    let rectange = ColorWheelAction().analogous(color, movementAngle: 60)
+    
+    switch self {
+    case .ElementColor:
+      return rectange.left
+    default:
+      return rectange.right
+    }
   }
 }

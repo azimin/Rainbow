@@ -34,6 +34,24 @@ extension Color {
     return Color(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness)
   }
   
+  func contrast() -> Color {
+    var hsb = self.hsb
+    
+    if hsb.brightness > 0.5 {
+      hsb.brightness = hsb.brightness * 0.7 - 0.05
+    } else {
+      hsb.brightness = max((hsb.brightness + 0.1), 0.3) * 1.2
+    }
+    
+    if hsb.saturation > 0.5 {
+      hsb.saturation = hsb.brightness * 0.7 - 0.05
+    } else {
+      hsb.saturation = max((hsb.saturation + 0.1), 0.3) * 1.2
+    }
+    
+    return Color(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness)
+  }
+  
   func shouldUseBorder(color: Color) -> Bool {
     let value = ColorCompare(firstColor: self, secondColor: color).CIE2000
     return value < 20
