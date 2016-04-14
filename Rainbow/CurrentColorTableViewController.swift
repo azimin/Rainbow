@@ -32,12 +32,16 @@ class CurrentColorTableViewController: UITableViewController {
   @IBOutlet weak var hslColorLabel: UILabel!
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return isDefined ? 2 : 3
+    return isDefined ? 3 : 4
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let color = Color(hexString: "6286F3")
+    color.changeContrastValue(-0.3)
+    print(color.contrastingBlackOrWhite())
+     
     colorView.layer.borderWidth = 1
     colorView.layer.borderColor = Color.lightGreyColor().CGColorValue
     colorView.layer.cornerRadius = colorView.frame.width / 2
@@ -86,7 +90,7 @@ class CurrentColorTableViewController: UITableViewController {
   }
   
   @IBAction func setHEXButtonAction(sender: UIButton) {
-    let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
+    let alertController = UIAlertController(title: "Set Color", message: "Please, write HEX string", preferredStyle: .Alert)
     
     let setAction = UIAlertAction(title: "Set", style: .Default) { (_) in
       let loginTextField = alertController.textFields![0] as UITextField
@@ -113,5 +117,11 @@ class CurrentColorTableViewController: UITableViewController {
   
   @IBAction func saveToClipboardAction(sender: AnyObject) {
     colorInClipboard = color
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let actionsVC = segue.destinationViewController as? ActionsWithColorTableViewController {
+      actionsVC.color = color
+    }
   }
 }

@@ -13,9 +13,9 @@ class ViewController: UIViewController {
   @IBAction func sliderAction(sender: UISlider) {
     //let angle = Int(sender.value * 360)
     
-    let color = Color.randomColor()
-    
-    
+
+    let color = RGBColorWheel.colorAtAngle(60)
+    print(color)
     
     colorView.backgroundColor = color.UIColorValue
     

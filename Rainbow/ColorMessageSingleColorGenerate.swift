@@ -11,7 +11,7 @@ import Foundation
 struct ColorMessageSingleColorGenerate: ColorMessageGenericType {
   typealias Generated = Color
   func execute(color: Color) -> Color {
-    return ColorWheelAction().takeSameStyleOfColor(color: color, forColorOnAngle: colorOnPlate)
+    return ColorWheelAction.takeSameStyleOfColor(color: color, forColorOnAngle: colorOnPlate)
   }
   
   let colorOnPlate: Color
@@ -22,5 +22,19 @@ struct ColorMessageSingleColorGenerate: ColorMessageGenericType {
   
   init(color: Color) {
     self.colorOnPlate = color
+  }
+}
+
+struct ColorMessagePlateColorGenerate: ColorMessageGenericType {
+  typealias Generated = [Color]
+  func execute(color: Color) -> [Color] {
+    var result = [Color]()
+    for defaultColor in RYBColorModel.DefaultColorsCollection.colors {
+      result.append(ColorWheelAction.takeSameStyleOfColor(color: color, forColorOnAngle: defaultColor))
+    }
+    return result
+  }
+  
+  init() {
   }
 }

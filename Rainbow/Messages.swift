@@ -21,6 +21,10 @@ struct Message {
     return ColorMessageSingleColorGenerate(color: color)
   }
   
+  static func getSuchColors() -> ColorMessagePlateColorGenerate {
+    return ColorMessagePlateColorGenerate()
+  }
+  
   static var effect: ColorMessageEffect.Type {
     return ColorMessageEffect.self
   }

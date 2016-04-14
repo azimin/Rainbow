@@ -23,8 +23,14 @@ enum ColorMessageEffect: ColorMessageGenericType {
     switch self {
     case .ElementColor:
       return rectange.left
-    default:
+    case .BorderColor:
       return rectange.right
+    case .LessContrast:
+      return color.changeContrastValue(-0.1)
+    case .MoreContrast:
+      return color.changeContrastValue(0.1)
+    case .NotVeryContrast:
+      return color.balancedColor()
     }
   }
 }

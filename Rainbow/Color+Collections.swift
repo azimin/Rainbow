@@ -42,6 +42,17 @@ extension Color {
   static func randomColor() -> Color {
     return Color(red: Float.random(), green: Float.random(), blue: Float.random())
   }
+  
+  static func randomColor(isDark:Bool) -> Color {
+    let randomColor = Color.randomColor()
+    let angle: Int
+    if isDark {
+      angle = -20 + Int(Float.random() * 180)
+    } else {
+      angle = 160 + Int(Float.random() * 180)
+    }
+    return RYBColorWheel.colorAtAngle(randomColor, angle: angle)
+  }
 }
 
 // Complex

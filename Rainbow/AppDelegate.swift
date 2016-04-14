@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    
+    let attr: [NSObject: AnyObject] = [NSFontAttributeName: UIFont.boldSystemFontOfSize(18)]
+    UISegmentedControl.appearance().setTitleTextAttributes(attr , forState: .Normal)
+    
     return true
   }
 

@@ -18,9 +18,9 @@ struct ColorWheelAction {
     self.init(colorWheel: RYBColorWheel.self)
   }
   
-  func takeSameStyleOfColor(color originColor: Color, forColorOnAngle color: Color) -> Color {
-    let angle = colorWheel.angleForColor(color)
-    return colorWheel.colorAtAngle(originColor, angle: angle)
+  static func takeSameStyleOfColor(color originColor: Color, forColorOnAngle color: Color) -> Color {
+    let angle = RGBColorWheel.angleForColor(color)
+    return RGBColorWheel.colorAtAngle(originColor, angle: angle)
   }
   
   // Hight contrast
