@@ -8,7 +8,34 @@
 
 import UIKit
 
+struct Person {
+  var firstName: String
+  var secondName: String
+}
+
+struct PersonModel {
+  var person: Person
+  var name: String {
+    return "\(person.firstName) \(person.secondName)"
+  }
+}
+
 class ViewController: UIViewController {
+  
+  var personModel: PersonModel!
+  @IBOutlet var nameLabel: UILabel!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    nameLabel.text = personModel.name
+    
+    let color = Color.redColor()
+    
+    color << Message.getSuchColor(.Red)
+    color << Message.effect.NotVeryContrast
+  }
+  
   
   @IBAction func sliderAction(sender: UISlider) {
     //let angle = Int(sender.value * 360)
@@ -35,36 +62,6 @@ class ViewController: UIViewController {
   @IBOutlet weak var stackView: UIStackView!
   var colorView: UIView!
   var secondColorView: UIView!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    
-//    let newColor = Color.redColor()
-//    let wheelAction = ColorWheelAction(colorWheel: RYBColorWheel.self)
-//    let colors = wheelAction.rectangle(newColor, movementAngle: 30)
-//    
-//    addColor(colors.firstPair.0)
-//    addColor(colors.firstPair.1)
-//    
-//    addColor(colors.secondPair.0)
-//    addColor(colors.secondPair.1)
-    
-    addColor(ColorWheelAction().complementary(Color(hexString: "F3A254")).original)
-    addColor(ColorWheelAction().complementary(Color(hexString: "F3A254")).complementary)
-    
-    print(Color(hexString: "7109AA").RGBVector)
-    
-//    addColor(Color(red: 0.75, yellow: 0.25, blue: 0))
-//    addColor(Color(red: 0.5, yellow: 0.5, blue: 0))
-//    addColor(Color(red: 0.25, yellow: 0.75, blue: 0))
-//    addColor(Color(red: 0, yellow: 1, blue: 0))
-//    addColor(Color(red: 0, yellow: 0.75, blue: 0.25))
-//    addColor(Color(red: 0, yellow: 0.5, blue: 0.5))
-//    addColor(Color(red: 0, yellow: 0.25, blue: 0.75))
-//    addColor(Color(red: 0, yellow: 0, blue: 1))
-    // Do any additional setup after loading the view.
-  }
   
   func test() {
     let newColor = Color.randomColor()

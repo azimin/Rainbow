@@ -30,6 +30,9 @@ struct ColorWheelAction {
     return (color, complementaryColor)
   }
   
+  // Для генерации ... цвета надо использовать деаметриально противоположный
+  // 
+  
   // Two less contrast colors
   func splitComplementary(color: Color, movementAngle: Int = 30) -> (original: Color, complementaryRight: Color, complementaryLeft: Color) {
     let angle = colorWheel.angleForColor(color)

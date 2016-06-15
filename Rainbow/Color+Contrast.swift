@@ -70,49 +70,6 @@ extension Color {
     return Color(hue: randomColor.hsl.hue, saturation: hsl.saturation, luminosity: hsl.luminosity)
   }
   
-//  func contrastRandomColor2(powerfull: Float = 1.0) -> Color {
-//    let isLight = !self.isDarkColor
-//    var random = Color.randomColor()
-//    
-//    while true {
-//      random = Color.randomColor()
-//      let randHue = random.hsb.hue
-//      let hue = self.hsb.hue
-//      
-//      let angle = optimizeAngle(randHue - hue)
-//      
-//      if !isLight {
-//        if angle < 360 && angle > 135 {
-//          continue
-//        }
-//      }
-//      
-//      if angle > 30 {
-//        break
-//      }
-//    }
-//    
-//    var brightness = self.hsb.brightness
-//    var saturation = random.hsb.saturation
-//    var additional: Float = 0
-//    
-//    if brightness < 0.2 {
-//      additional = 0.2
-//    } else if brightness > 0.8 {
-//      additional = -0.2
-//    }
-//    
-//    if isLight {
-//      brightness -= (0.25 * powerfull)
-//    } else {
-//      brightness += (0.25 * powerfull)
-//      saturation = self.hsb.saturation - (self.hsb.saturation * 0.25) - 0.25
-//    }
-//    brightness += additional
-//    
-//    return Color(hue: random.hsb.hue, saturation: saturation, brightness: brightness)
-//  }
-  
   func contrast() -> Color {
     var hsb = self.hsb
     
